@@ -6,9 +6,8 @@ filters.forEach(button => button.addEventListener('click', () => {
   const category = button.dataset.filter;
   let visible = 0;
   filters.forEach(item => {
-    const selected = item === button;
-    item.classList.toggle('is-selected', selected);
-    item.setAttribute('aria-pressed', String(selected));
+    item.classList.toggle('is-selected', item === button);
+    item.setAttribute('aria-pressed', String(item === button));
   });
   projects.forEach(project => {
     project.hidden = category !== 'all' && project.dataset.category !== category;
@@ -16,3 +15,18 @@ filters.forEach(button => button.addEventListener('click', () => {
   });
   document.getElementById('project-status').textContent = `显示 ${visible} 个项目`;
 }));
+document.querySelectorAll('[data-open-dialog]').forEach(button => {
+  button.addEventListener('click', () => {
+    const dialog = document.getElementById(button.dataset.openDialog);
+    dialog.showModal();
+    document.body.style.overflow = 'hidden';
+  });
+});
+document.querySelectorAll('dialog').forEach(dialog => {
+  dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => { document.body.style.overflow = ''; });
+  dialog.addEventListener('click', event => {
+    const bounds = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+  });
+});
