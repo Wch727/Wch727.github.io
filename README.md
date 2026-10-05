@@ -21,3 +21,6 @@
 ## 验证
 
 已用 Playwright 检查桌面 1440px、手机 390px 的页面截图与图片加载，检查分类筛选、详情窗口与 Esc 关闭。发布时保留现有仓库历史，使用普通提交推送。
+
+## 字体
+中文采用自托管 Noto Sans SC，英文采用 Manrope，均保留 OFL 许可证。新增中文内容后，运行 node tools/update-fonts.cjs 更新字形子集。详见 assets/fonts/README.md。
