@@ -1,19 +1,13 @@
 ---
 import MainGridLayout from '../layouts/MainGridLayout.astro';
-const favorites = [
- ['新海诚的作品','天空、雨与相遇','你的名字。 · 天气之子 · 秒速五厘米 · 言叶之庭'],
- ['鬼灭之刃','时透无一郎','喜欢霞柱，也给这个小站留一点雾青色。'],
- ['萤火之森','森林里的夏天','喜欢的动画电影。'],
- ['间谍过家家','间谍过家家','我的动画片单之一。'],
- ['刀剑神域','刀剑神域','也喜欢这个关于虚拟世界的故事。'],
- ['奶龙','还有奶龙！','喜欢的作品里，也给奶龙留一个位置。']
-];
+import { favorites } from '../data/favorites';
 ---
 <MainGridLayout title="喜欢的作品" description="Wangles 喜欢的动画、电影与角色">
- <section class="card-base collection">
+ <section class="card-base collection film-collection" data-pagefind-body>
   <p class="welcome-label">代码之外</p><h1 class="collection-title">一些喜欢，放在这里。</h1>
   <p class="collection-intro">电影、动画，还有喜欢的角色。</p>
-  <div class="shelf">{favorites.map(([label,title,description])=><article class="shelf-item"><small>{label}</small><h2>{title}</h2><p>{description}</p></article>)}</div>
-  <p class="shelf-note">这份片单没有排名。以后遇到喜欢的作品，再慢慢添进来。</p>
+  <div class="poster-grid">{favorites.map(work => <article class="poster-card"><a class="poster-image" href={work.cover} target="_blank" rel="noopener" data-no-swup aria-label={`查看《${work.title}》完整图片`}><img src={work.cover} alt={`《${work.title}》作品海报`} width="600" height="858" loading="lazy" decoding="async" /><span class="poster-enlarge" aria-hidden="true">↗</span></a><p class="poster-category">{work.group}</p><h2>{work.title}</h2></article>)}</div>
+  <section class="favorite-character"><img src="/assets/muichiro-hero.png" alt="雾青色背景中的时透无一郎" width="1536" height="1024" loading="lazy" /><div><p class="welcome-label">喜欢的角色</p><h2>时透无一郎</h2><p>《鬼灭之刃》的霞柱。<br />这个小站，也留了一点他的雾青色。</p></div></section>
+  <details class="image-credits"><summary>图片来源</summary><p>作品图片版权归原权利人所有，点击名称可查看来源。</p><ul>{favorites.map(work => <li><a href={work.source} target="_blank" rel="noopener noreferrer">{work.title} ↗</a></li>)}</ul><p>时透无一郎配图为 AI 生成的角色插画。</p></details>
  </section>
 </MainGridLayout>

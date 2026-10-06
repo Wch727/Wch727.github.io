@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import Pagination from "../components/control/Pagination.astro";
+import FavoritePreview from "../components/FavoritePreview.astro";
 import PostPage from "../components/PostPage.astro";
 import { PAGE_SIZE } from "../constants/constants";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
@@ -19,6 +20,7 @@ const len = page.data.length;
 
 <MainGridLayout>
     {page.currentPage === 1 && <section class="card-base welcome"><p class="welcome-label">你好，欢迎来到我的小站</p><h1>晴空、代码与一些喜欢的事</h1><p>我是 Wangles，在人大高瓴学习人工智能。这里放着我的项目、算法竞赛记录，以及代码之外的喜欢。</p><a href="/about/">认识一下 →</a><a href="/favorites/">去看看我的片单 →</a></section>}
+    {page.currentPage === 1 && <FavoritePreview />}
     <PostPage page={page}></PostPage>
     <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
 </MainGridLayout>
