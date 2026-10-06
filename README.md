@@ -1,28 +1,60 @@
-# Wangles 的个人小站
+# Wangles.github.io
 
-基于 [Fuwari](https://github.com/saicaca/fuwari) / Astro，保留原模板导航、侧栏、文章列表、归档、搜索与主题切换。模板许可见 LICENSE。
+Wangles 的个人网站，存放项目介绍、知识笔记、随笔和片单。
 
-线上地址：https://wch727.github.io/
+访问地址：[wch727.github.io](https://wch727.github.io/)。网站基于 [Fuwari](https://github.com/saicaca/fuwari)，使用 Astro、Svelte 和 Tailwind CSS，部署在 GitHub Pages。
 
-## 本地开发
+## 本地运行
 
-- Node.js 22，pnpm 9.14.4
-- pnpm install --frozen-lockfile
-- pnpm dev
-- pnpm check
-- pnpm build
+需要 Node.js 22 和 pnpm 9.14.4。
 
-## 内容
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-- src/config.ts：站点与个人信息
-- src/content/posts/：项目介绍；发布日期是本站介绍的整理日期，不代表项目创建日期
-- src/content/spec/about.md：关于我
-- src/pages/favorites.astro：喜欢的作品
-- src/pages/friends.astro：友链
-- src/styles/personal.css：轻量字体与个人样式
+默认开发地址是 `http://localhost:4321/`。检查和构建：
 
-推送 main 后由 GitHub Actions 构建 dist 并发布到 Pages，Pages 来源需设为 GitHub Actions。
+```bash
+pnpm check
+pnpm build
+pnpm preview
+```
 
-中文字体使用本站字符子集。新增文字后运行 node tools/update-fonts.cjs，字体本地托管，许可证随文件保留。
+构建结果在 `dist/`，`pnpm build` 同时生成站内搜索索引。
 
-横幅为原创生成插画，生成说明见 assets/after-rain-artwork.md。头像为此前生成的时透无一郎插画。无官方关联。
+## 修改内容
+
+| 内容 | 位置 |
+| --- | --- |
+| 站点名称、导航、头像和个人信息 | `src/config.ts` |
+| 项目、知识笔记和随笔正文 | `src/content/posts/` |
+| 关于我 | `src/content/spec/about.md` |
+| 知识笔记与随笔列表 | `src/pages/learning.astro`、`src/pages/essays.astro` |
+| 喜欢的作品与独立介绍页 | `src/data/favorites.ts`、`src/data/work-details.ts`、`src/pages/favorites/works/` |
+| 歌手、喜欢的歌曲与独立介绍页 | `src/data/musicians.ts`、`src/data/favorite-songs.ts`、`src/pages/favorites/music/` |
+| 喜欢页总览 | `src/pages/favorites.astro` |
+| 友链 | `src/pages/friends.astro` |
+| 随笔分段背景 | `src/components/EssayScenes.astro`、`src/styles/essay-scenes.css` |
+| 奶龙跟随组件 | `src/components/NailoongCompanion.astro` |
+| 字体、海报和网页图片 | `public/assets/` |
+
+文章使用 Markdown，标题、日期、分类等信息在文件开头的 frontmatter 中设置。项目文章的日期采用整理时查询到的仓库最新提交时间，写入后保持固定，不随之后的提交或文案修改更新。页面日期统一按北京时间显示。
+
+只确定月份的文章设置 `datePrecision: month`，页面按 `2025.5` 的形式显示；月首日期仅用于内部排序。
+
+中文字体按本站使用的字符分批生成并本地托管。新增中文内容后运行：
+
+```bash
+node tools/update-fonts.cjs
+```
+
+该脚本需要网络连接和 curl，会更新 `public/assets/fonts/` 与 `src/styles/generated-fonts.css`。
+
+## 发布
+
+确认本地内容后，提交并推送到 `main`。`.github/workflows/deploy.yml` 会检查代码、构建网站，并发布 `dist/` 到 GitHub Pages。仓库的 Pages 来源应设为 GitHub Actions。
+
+## 素材与许可
+
+Fuwari 模板的许可证见 `LICENSE`。字体许可证在 `public/assets/fonts/`。作品海报来源记录在 `public/assets/posters/sources.json`；奶龙角色图来自第七印象官网，来源见 `assets/nailoong-source.md`。网站背景插画的生成记录保存在 `assets/` 中。

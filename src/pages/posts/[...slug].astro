@@ -11,6 +11,7 @@ import { Icon } from "astro-icon/components";
 import { licenseConfig } from "src/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
+import EssayScenes from "../../components/EssayScenes.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 
@@ -38,7 +39,7 @@ const jsonLd = {
 		name: profileConfig.name,
 		url: Astro.site,
 	},
-	datePublished: formatDateToYYYYMMDD(entry.data.published),
+	datePublished: entry.data.datePrecision === 'month' ? formatDateToYYYYMMDD(entry.data.published).slice(0,7) : formatDateToYYYYMMDD(entry.data.published),
 	inLanguage: entry.data.lang
 		? entry.data.lang.replace("_", "-")
 		: siteConfig.lang.replace("_", "-"),
@@ -49,7 +50,7 @@ const jsonLd = {
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
-            {}
+            {"essay-reading": entry.data.category === "随笔"}
         ]}>
             <!-- word count and reading time -->
             <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
@@ -88,6 +89,7 @@ const jsonLd = {
                 <PostMetadata
                         class="mb-5"
                         published={entry.data.published}
+                        datePrecision={entry.data.datePrecision}
                         updated={entry.data.updated}
                         tags={entry.data.tags}
                         category={entry.data.category}
@@ -97,14 +99,14 @@ const jsonLd = {
 
             <!-- always show cover as long as it has one -->
 
-            {entry.data.image &&
+            {entry.data.image && entry.data.category !== "随笔" &&
                 <ImageWrapper id="post-cover" src={entry.data.image} basePath={path.join("content/posts/", getDir(entry.id))} class="mb-8 rounded-xl banner-container onload-animation"/>
             }
 
 
-            <Markdown class="mb-6 markdown-content onload-animation">
+            {entry.slug === 'rain-and-cherry-blossoms' ? <EssayScenes text={entry.body} /> : <Markdown class="mb-6 markdown-content onload-animation">
                 <Content />
-            </Markdown>
+            </Markdown>}
 
             {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
 

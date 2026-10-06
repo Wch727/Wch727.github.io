@@ -6,7 +6,7 @@ export const siteConfig: SiteConfig = {
  toc: {enable: true, depth: 2}, favicon: [{src: '/favicon.svg'}]
 };
 export const navBarConfig: NavBarConfig = {links: [
- {name: '首页', url: '/'}, {name: '归档', url: '/archive/'},
+ {name: '首页', url: '/'}, {name: '知识', url: '/learning/'}, {name: '随笔', url: '/essays/'}, {name: '归档', url: '/archive/'},
  {name: '喜欢', url: '/favorites/'}, {name: '关于', url: '/about/'}, {name: '友链', url: '/friends/'}
 ]};
 export const profileConfig: ProfileConfig = {

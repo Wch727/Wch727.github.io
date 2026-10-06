@@ -1,0 +1,10 @@
+---
+import MainGridLayout from '../layouts/MainGridLayout.astro';
+import PostPage from '../components/PostPage.astro';
+import { getSortedPosts } from '../utils/content-utils';
+const essays = (await getSortedPosts()).filter(entry => entry.data.category === '随笔');
+---
+<MainGridLayout title="随笔" description="Wangles 写下的文字。">
+  <section class="card-base welcome"><p class="welcome-label">写下来的心事</p><h1>随笔</h1><p>关于成长、喜欢的故事，以及日常里留下的念头。</p></section>
+  <PostPage page={{ data: essays }} />
+</MainGridLayout>

@@ -1,13 +1,15 @@
 ---
 import MainGridLayout from '../layouts/MainGridLayout.astro';
 import { favorites } from '../data/favorites';
+import { musicians } from '../data/musicians';
 ---
 <MainGridLayout title="喜欢的作品" description="Wangles 喜欢的动画、电影与角色">
  <section class="card-base collection film-collection" data-pagefind-body>
   <p class="welcome-label">代码之外</p><h1 class="collection-title">一些喜欢，放在这里。</h1>
-  <p class="collection-intro">电影、动画，还有喜欢的角色。</p>
-  <div class="poster-grid">{favorites.map(work => <article class="poster-card"><a class="poster-image" href={work.cover} target="_blank" rel="noopener" data-no-swup aria-label={`查看《${work.title}》完整图片`}><img src={work.cover} alt={`《${work.title}》作品海报`} width="600" height="858" loading="lazy" decoding="async" /><span class="poster-enlarge" aria-hidden="true">↗</span></a><p class="poster-category">{work.group}</p><h2>{work.title}</h2></article>)}</div>
+  <p class="collection-intro">电影、动画、角色和音乐。</p>
+  <div class="poster-grid">{favorites.map(work => <article class="poster-card"><a class="poster-image" href={work.href} aria-label={`阅读${work.title}介绍`}><img src={work.cover} alt={`《${work.title}》作品海报`} width="600" height="858" loading="lazy" decoding="async" /><span class="poster-enlarge" aria-hidden="true">→</span></a><h2 class="poster-name"><a href={work.href}>{work.title}</a></h2><p class="poster-original">{work.originalTitle}</p><p class="poster-description">{work.description}</p></article>)}</div>
+  <section class="music-favorites"><h2>音乐</h2><div class="musician-grid">{musicians.map(artist => <article><a href={artist.href} aria-label={`阅读${artist.name}介绍`}><img src={artist.photo} alt={`${artist.name}宣传照`} width="700" height="875" loading="lazy" decoding="async" /></a><h3><a href={artist.href}>{artist.name}</a></h3></article>)}</div></section>
   <section class="favorite-character"><img src="/assets/muichiro-hero.png" alt="雾青色背景中的时透无一郎" width="1536" height="1024" loading="lazy" /><div><p class="welcome-label">喜欢的角色</p><h2>时透无一郎</h2><p>《鬼灭之刃》的霞柱。<br />这个小站，也留了一点他的雾青色。</p></div></section>
-  <details class="image-credits"><summary>图片来源</summary><p>作品图片版权归原权利人所有，点击名称可查看来源。</p><ul>{favorites.map(work => <li><a href={work.source} target="_blank" rel="noopener noreferrer">{work.title} ↗</a></li>)}</ul><p>时透无一郎配图为 AI 生成的角色插画。</p></details>
+  <details class="image-credits"><summary>图片来源</summary><p>作品图片与宣传照版权归原权利人所有，点击名称可查看来源。</p><ul>{favorites.map(work => <li><a href={work.source} target="_blank" rel="noopener noreferrer">{work.title} ↗</a></li>)}{musicians.map(artist => <li><a href={artist.source} target="_blank" rel="noopener noreferrer">{artist.name} ↗</a></li>)}</ul><p>时透无一郎配图为 AI 生成的角色插画。</p></details>
  </section>
 </MainGridLayout>

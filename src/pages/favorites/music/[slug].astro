@@ -1,0 +1,25 @@
+---
+import MainGridLayout from '../../../layouts/MainGridLayout.astro';
+import { musicians } from '../../../data/musicians';
+import { favoriteSongs } from '../../../data/favorite-songs';
+import { songScenes } from '../../../data/song-scenes';
+export function getStaticPaths(){return musicians.map(artist=>({params:{slug:artist.slug},props:{artist}}));}
+const {artist}=Astro.props;
+const songs=favoriteSongs[artist.slug];
+const scenes=songScenes[artist.slug] || [];
+---
+<MainGridLayout title={artist.name} description={artist.paragraphs[0]}>
+  <article class="card-base favorite-detail" data-pagefind-body>
+    <a class="detail-back" href="/favorites/">← 回到喜欢</a>
+    <header class="favorite-detail-hero">
+      <a class="detail-image singer-detail-image" href={artist.photo} target="_blank" rel="noopener" data-no-swup aria-label="查看完整照片"><img src={artist.photo} alt={`${artist.name}宣传照`} width="700" height="875" /></a>
+      <div><p class="welcome-label">音乐</p><h1 class="collection-title">{artist.name}</h1><p class="detail-original">{artist.subtitle!==artist.name?artist.subtitle:''}</p><p class="detail-summary">{artist.paragraphs[0]}</p></div>
+    </header>
+    <section class="favorite-detail-body">
+      <h2>声音与作品</h2><p>{artist.paragraphs[1]}</p>
+      {scenes.length>0 && <section class="music-scene-section"><h2>歌曲配图</h2><div class="music-scene-gallery">{scenes.map((scene,index)=><figure class:list={['music-scene-figure',{'music-scene-secondary':index>0}]}><img src={scene.image} alt={`${scene.title}的原创意境配图`} width="1200" height="800" loading="lazy" decoding="async" /><figcaption><h3>{scene.title}</h3><p>{scene.note}</p></figcaption></figure>)}</div></section>}
+      {songs ? <section id="songs" class="favorite-song-section"><h2>喜欢的歌{artist.slug!=='stefanie-sun' && <small lang="ja">好きな曲</small>}</h2><div class="favorite-song-grid">{songs.map(song=><article class="favorite-song-card"><h3>{song.title}</h3><blockquote lang={song.language==='ja'?'ja':'zh-CN'}>{song.excerpt}</blockquote><a href={song.source} target="_blank" rel="noopener noreferrer">{song.language==='ja'?'歌詞を読む':'歌词来源'} ↗</a></article>)}</div></section> : <><h2>部分作品</h2><ul class="artist-works">{artist.works.map((title:string)=><li>{title}</li>)}</ul></>}
+    </section>
+    <footer class="detail-sources"><a href={artist.link} target="_blank" rel="noopener noreferrer">歌手与作品资料 ↗</a><a href={artist.source} target="_blank" rel="noopener noreferrer">照片来源 ↗</a></footer>
+  </article>
+</MainGridLayout>

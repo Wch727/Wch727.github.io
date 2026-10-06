@@ -5,6 +5,6 @@ const selected = favorites.filter(work => ['your-name', 'weathering', 'garden', 
 <section class="card-base favorite-preview">
   <div class="favorite-heading"><h2>喜欢的作品</h2><a href="/favorites/">完整片单 · 8 部 →</a></div>
   <div class="preview-posters">
-    {selected.map(work => <a href="/favorites/" aria-label={`查看喜欢的作品：${work.title}`}><img src={work.cover} alt={`${work.title}海报`} width="600" height="858" loading="lazy" decoding="async" /><span>{work.title}</span></a>)}
+    {selected.map(work => <a href={work.href} aria-label={`阅读${work.title}介绍`}><img src={work.cover} alt={`${work.title}海报`} width="600" height="858" loading="lazy" decoding="async" /><span>{work.title}</span></a>)}
   </div>
 </section>

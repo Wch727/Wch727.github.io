@@ -1,0 +1,10 @@
+---
+import MainGridLayout from '../layouts/MainGridLayout.astro';
+import PostPage from '../components/PostPage.astro';
+import { getSortedPosts } from '../utils/content-utils';
+const notes = (await getSortedPosts()).filter(entry => ['论文复现', '学习笔记'].includes(entry.data.category || ''));
+---
+<MainGridLayout title="知识笔记" description="Wangles 的论文复现、方法理解与学习笔记。">
+  <section class="card-base welcome"><p class="welcome-label">学习与复现</p><h1>知识笔记</h1><p>这里收录论文复现笔记和统计学学习资料。</p><div class="learning-topics"><span>强化学习</span><span>Agent Memory</span><span>Agent Harness</span><span>论文复现</span></div></section>
+  <PostPage page={{data:notes}} />
+</MainGridLayout>

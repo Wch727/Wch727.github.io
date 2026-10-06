@@ -4,6 +4,7 @@ const postsCollection = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		published: z.date(),
+		datePrecision: z.enum(['day','month']).default('day'),
 		updated: z.date().optional(),
 		draft: z.boolean().optional().default(false),
 		description: z.string().optional().default(""),

@@ -1,0 +1,19 @@
+---
+import MainGridLayout from '../../../layouts/MainGridLayout.astro';
+import { favorites } from '../../../data/favorites';
+import { workDetails } from '../../../data/work-details';
+export function getStaticPaths(){return favorites.map(work=>({params:{slug:work.slug},props:{work}}));}
+const {work}=Astro.props;
+const detail=workDetails[work.slug];
+---
+<MainGridLayout title={work.title} description={work.description}>
+  <article class="card-base favorite-detail" data-pagefind-body>
+    <a class="detail-back" href="/favorites/">← 回到喜欢</a>
+    <header class="favorite-detail-hero">
+      <a class="detail-image" href={work.cover} target="_blank" rel="noopener" data-no-swup aria-label="查看完整海报"><img src={work.cover} alt={`${work.title}作品海报`} width="600" height="858" /></a>
+      <div><p class="welcome-label">{detail.kind}{detail.year && ` · ${detail.year}`}</p><h1 class="collection-title">{work.title}</h1><p class="detail-original">{work.originalTitle}</p><p class="detail-creator">{detail.creator}</p><p class="detail-summary">{work.description}</p></div>
+    </header>
+    <section class="favorite-detail-body"><h2>关于这部作品</h2>{detail.paragraphs.map(paragraph=><p>{paragraph}</p>)}</section>
+    <footer class="detail-sources"><a href={detail.official} target="_blank" rel="noopener noreferrer">作品官网 ↗</a><a href={work.source} target="_blank" rel="noopener noreferrer">海报来源 ↗</a></footer>
+  </article>
+</MainGridLayout>

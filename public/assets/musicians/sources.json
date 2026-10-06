@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "milet",
+    "name": "milet",
+    "image": "https://www.milet.jp/img/milet-budokan-2026-og.jpg",
+    "source": "https://www.milet.jp/"
+  },
+  {
+    "slug": "aimer",
+    "name": "Aimer",
+    "image": "https://skream.jp/news/assets_c/2021/12/Aimer_ONEANDLAST-thumb-1200xauto-155882.jpg",
+    "source": "https://skream.jp/news/2021/12/aimer_brave_shine_remix.php"
+  },
+  {
+    "slug": "stefanie-sun",
+    "name": "孙燕姿",
+    "image": "https://media.vogue.com.tw/photos/5db7e1c2c2e36100085af1d1/master/w_1600%2Cc_limit/2019072360799281.jpg",
+    "source": "https://www.vogue.com.tw/culture/content-48525"
+  },
+  {
+    "slug": "david-tao",
+    "name": "陶喆",
+    "image": "https://pgw.udn.com.tw/gw/photo.php?exp=3600&sh=0&sw=0&u=https%3A%2F%2Fuc.udn.com.tw%2Fphoto%2F2025%2F03%2F14%2Frealtime%2F31654386.jpg&x=0&y=0&w=900",
+    "source": "https://stars.udn.com/star/story/10092/8608079"
+  },
+  {
+    "slug": "hikaru-utada",
+    "name": "宇多田光",
+    "image": "https://lp.p.pia.jp/shared/materials/1e2dabdd-861a-4380-8d1b-763a242df013/origin.jpg",
+    "source": "https://lp.p.pia.jp/article/news/227105/photo-gallery/index.html?id=10"
+  },
+  {
+    "slug": "jay-chou",
+    "name": "周杰伦",
+    "image": "https://images.rollingstonejapan.com/articles/39000/39334/ORG/72da5c2eebcda1c91593d5232d89bd6a.jpg",
+    "source": "https://rollingstonejapan.com/articles/detail/39334"
+  },
+  {
+    "slug": "fish-leong",
+    "name": "梁静茹",
+    "image": "https://pgw.udn.com.tw/gw/photo.php?exp=3600&sh=0&sw=0&u=https%3A%2F%2Fuc.udn.com.tw%2Fphoto%2F2024%2F04%2F10%2Frealtime%2F29412686.jpg&x=0&y=0&w=900",
+    "source": "https://stars.udn.com/star/story/10092/7889171"
+  }
+]

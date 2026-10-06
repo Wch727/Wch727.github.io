@@ -1,0 +1,5 @@
+# Essay background
+
+Original illustration generated with built-in imagegen for 雨落无声，樱逝无痕. The user's printed photograph is not included in the website. Source: assets/essay-cherry-rain.png; optimized website image: public/assets/essay-cherry-rain.webp.
+
+Prompt: Original panoramic illustration for a Chinese personal essay called Rain Falls Silently, Cherry Blossoms Leave No Trace. Hand-painted Japanese animation background, a small quiet town after rain at blue hour, wet pavement reflecting pale lavender evening sky, a railway crossing far in the background, branches of delicate pale pink cherry blossoms on the upper left, sparse petals floating in rain-cleared air, distant warm convenience store window as a tiny accent. No people, no text, no logos. Poetic, wistful, tender yet hopeful, beautifully detailed natural lighting, muted blue-gray, mist teal and pale pink palette. Wide 3:1 landscape composition with most details on the left and bottom, clear atmospheric sky in the upper center and right. This is a landscape background image, not a poster or collage.

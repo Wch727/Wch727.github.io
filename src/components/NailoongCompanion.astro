@@ -1,0 +1,43 @@
+<div id="nailoong-companion" aria-label="奶龙吉祥物">
+  <span id="mascot-greeting" role="status" hidden>奶龙来陪你啦。</span>
+  <button id="mascot-pat" type="button" aria-label="摸摸奶龙" title="摸摸奶龙"><img src="/assets/nailoong-mascot.webp" alt="黄色的奶龙网站吉祥物" width="320" height="320" /></button>
+  <button id="mascot-hide" type="button" aria-label="收起奶龙" title="收起奶龙">×</button>
+</div>
+<button id="mascot-restore" type="button" hidden aria-label="叫奶龙回来">奶龙</button>
+<style>
+  #nailoong-companion{position:fixed;top:0;left:0;width:82px;height:90px;z-index:70;pointer-events:none;will-change:transform;transform:translate(calc(100vw - 100px),calc(100vh - 115px))}#nailoong-companion[hidden],#mascot-restore[hidden],#mascot-greeting[hidden]{display:none}
+  #mascot-pat{display:block;width:82px;height:90px;pointer-events:auto;border:0;background:transparent;cursor:pointer;padding:0}#mascot-pat img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 5px #5a400925)}#mascot-hide{position:absolute;right:-3px;top:2px;width:22px;height:22px;border-radius:50%;background:#fff9dfed;color:#675125;border:1px solid #ddc88c;pointer-events:auto;font-size:16px;line-height:1;opacity:0}#nailoong-companion:hover #mascot-hide,#mascot-hide:focus-visible{opacity:1}
+  #mascot-greeting{position:absolute;right:0;bottom:100%;min-width:130px;text-align:center;background:#fff9e9;color:#695029;border:1px solid #e4d5ae;border-radius:14px 14px 0 14px;padding:8px 12px;font-size:12px;white-space:nowrap}#mascot-restore{position:fixed;right:16px;bottom:18px;z-index:70;font-size:12px;padding:8px 14px;background:#fff3c6;color:#695029;border:1px solid #e4d5ae;border-radius:20px;box-shadow:0 4px 12px #8f652010}
+  .is-moving #mascot-pat img{animation:nailoong-walk .28s ease-in-out infinite alternate}.is-happy #mascot-pat img{animation:nailoong-happy .45s ease-in-out 2}@keyframes nailoong-walk{from{transform:translateY(0) rotate(-4deg)}to{transform:translateY(-5px) rotate(4deg)}}@keyframes nailoong-happy{50%{transform:translateY(-12px) rotate(-8deg)}}@media(pointer:coarse){#mascot-hide{opacity:1}#nailoong-companion,#mascot-pat{width:68px;height:76px}}@media(prefers-reduced-motion:reduce){#mascot-pat img{animation:none!important}}
+</style>
+<script>
+  const companion = document.querySelector<HTMLElement>('#nailoong-companion');
+  const restore = document.querySelector<HTMLButtonElement>('#mascot-restore');
+  const greeting = document.querySelector<HTMLElement>('#mascot-greeting');
+  if(companion && restore && greeting) {
+    const canFollow = () => matchMedia('(pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const storageKey = 'wangles-mascot-hidden';
+    let x = innerWidth - 100, y = innerHeight - 115, targetX=x, targetY=y, frame=0;
+    const clamp = (value:number, max:number) => Math.max(8, Math.min(value,Math.max(8,max)));
+    const draw = () => {companion.style.transform=`translate3d(${x}px,${y}px,0)`};
+    const tick = () => {
+      const dx=targetX-x, dy=targetY-y;
+      if(Math.abs(dx)+Math.abs(dy)<.8) {x=targetX;y=targetY;draw();companion.classList.remove('is-moving');frame=0;return;}
+      x+=dx*.075;y+=dy*.075;draw();companion.classList.add('is-moving');frame=requestAnimationFrame(tick);
+    };
+    const move = () => {if(!frame)frame=requestAnimationFrame(tick)};
+    const setHidden = (hidden:boolean) => {companion.hidden=hidden;restore.hidden=!hidden;try{localStorage.setItem(storageKey,String(hidden))}catch{};if(hidden){cancelAnimationFrame(frame);frame=0;companion.classList.remove('is-moving')}};
+    try {setHidden(localStorage.getItem(storageKey)==='true')}catch{}
+    draw();
+    window.addEventListener('pointermove',event=>{
+      if(!canFollow() || companion.hidden)return;
+      if(event.target instanceof Element && event.target.closest('#nailoong-companion')){targetX=x;targetY=y;return;}
+      targetX=clamp(event.clientX+30,innerWidth-95);targetY=clamp(event.clientY+32,innerHeight-100);move();
+    },{passive:true});
+    window.addEventListener('resize',()=>{targetX=x=clamp(innerWidth-100,innerWidth-95);targetY=y=clamp(innerHeight-115,innerHeight-100);draw()},{passive:true});
+    document.querySelector('#mascot-hide')?.addEventListener('click',()=>setHidden(true));
+    restore.addEventListener('click',()=>{targetX=x=innerWidth-100;targetY=y=innerHeight-115;draw();setHidden(false)});
+    let greetingTimer:number;
+    document.querySelector('#mascot-pat')?.addEventListener('click',()=>{greeting.hidden=false;companion.classList.add('is-happy');clearTimeout(greetingTimer);greetingTimer=window.setTimeout(()=>{greeting.hidden=true;companion.classList.remove('is-happy')},1600)});
+  }
+</script>

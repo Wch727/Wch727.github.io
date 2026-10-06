@@ -4,6 +4,8 @@ The site serves its font files from this directory, so visitors do not need to c
 
 - **Noto Sans SC**: Simplified Chinese body text, variable weights 300–700. Subset generated from the site's Astro, Markdown, TypeScript and Svelte sources.
 - **Noto Serif SC**: Light editorial headings, variable weights 300–700, using the same site character subset.
+
+The current site loads these two Chinese families in batches of at most 200 characters, using `src/styles/generated-fonts.css` and local `notosanssc-*.woff2` / `notoserifsc-*.woff2` files. Splitting the request avoids long text-subset URLs being returned as unrelated default font slices. The earlier single-file subsets are retained but no longer referenced by the site styles.
 - **Manrope**: Latin text and display name, variable weights 300–700, Latin character set.
 
 Sources:

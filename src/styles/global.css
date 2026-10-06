@@ -1,8 +1,11 @@
 /* Compile shared Tailwind component classes and their consumers together. */
 @import './main.css';
+@import './generated-fonts.css';
 @import './markdown.css';
 @import './expressive-code.css';
 @import './scrollbar.css';
 @import './transition.css';
 @import './photoswipe.css';
 @import './personal.css';
+@import './essay-scenes.css';
+@import './favorite-detail.css';

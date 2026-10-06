@@ -18,7 +18,30 @@ const families = [
   {name:'Noto Serif SC',file:'noto-serif-sc-site.woff2',directory:'notoserifsc',text:glyphs},
   {name:'Manrope',file:'manrope-latin.woff2',directory:'manrope'}
 ];
+let generatedCSS = '/* Local font subsets generated from site source text. */\n';
 for (const family of families) {
+  if (family.text) {
+    const characters = [...family.text];
+    for (let offset = 0; offset < characters.length; offset += 200) {
+      const chunk = characters.slice(offset, offset + 200).join('');
+      const chunkIndex = offset / 200;
+      const stem = family.directory + '-' + chunkIndex;
+      const chunkParams = new URLSearchParams({family: family.name + ':wght@300..700', display:'swap', text:chunk});
+      const chunkCssPath = path.join(out, stem + '.source.css');
+      download('https://fonts.googleapis.com/css2?' + chunkParams, chunkCssPath);
+      const chunkCSS = fs.readFileSync(chunkCssPath, 'utf8');
+      const matches = [...chunkCSS.matchAll(/src:\s*url\((https:\/\/[^)]+)\)\s*format\('woff2'\)/g)];
+      if (matches.length !== 1) throw new Error('Expected one font subset for ' + stem);
+      const filename = stem + '.woff2';
+      download(matches[0][1], path.join(out,filename));
+      const range = [...chunk].map(c=>'U+' + c.codePointAt(0).toString(16)).join(',');
+      generatedCSS += `@font-face{font-family:'${family.name}';font-style:normal;font-weight:300 700;font-display:swap;src:url('/assets/fonts/${filename}') format('woff2');unicode-range:${range}}\n`;
+    }
+    const licensePath = path.join(out,family.directory+'-OFL.txt');
+    if (!fs.existsSync(licensePath) || fs.statSync(licensePath).size < 1000) download('https://raw.githubusercontent.com/google/fonts/main/ofl/'+family.directory+'/OFL.txt',licensePath);
+    console.log(family.name+': '+Math.ceil(characters.length/200)+' local subsets');
+    continue;
+  }
   const params = new URLSearchParams({family:family.name+':wght@300..700',display:'swap'});
   if(family.text) params.set('text',family.text);
   const cssFile=path.join(out, family.directory+'.source.css');
@@ -35,4 +58,5 @@ for (const family of families) {
   console.log(family.name+': '+font.length+' bytes');
 }
 fs.writeFileSync(path.join(out,'site-glyphs.txt'),glyphs);
+fs.writeFileSync(path.join(root,'src/styles/generated-fonts.css'), generatedCSS);
 console.log('Self-hosted fonts downloaded; retain the OFL license files when distributing.');

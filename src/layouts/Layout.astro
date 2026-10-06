@@ -4,6 +4,7 @@ import "../styles/global.css";
 import "../styles/variables.styl";
 import "../styles/markdown-extend.styl";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
+import NailoongCompanion from "../components/NailoongCompanion.astro";
 import { profileConfig, siteConfig } from "@/config";
 import {
 	AUTO_MODE,
@@ -43,7 +44,7 @@ if (!banner || typeof banner !== "string" || banner.trim() === "") {
 }
 
 // TODO don't use post cover as banner for now
-banner = siteConfig.banner.src;
+// Keep a page-specific banner when the page provides one.
 
 const enableBanner = siteConfig.banner.enable;
 
@@ -153,6 +154,7 @@ const bannerOffset =
 	>
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
+		<NailoongCompanion />
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>

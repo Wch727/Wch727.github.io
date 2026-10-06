@@ -1,0 +1,14 @@
+---
+interface Props { text: string }
+const {text} = Astro.props;
+const paragraphs = text.trim().split(/\r?\n\s*\r?\n/).filter(part => !part.includes('essay-signature'));
+const scenes = ['essay-garden', 'essay-meeting', 'essay-cherry-rain', 'essay-platform'];
+const captions = ['雨中的庭园与木亭','暮色中的街道与远空','雨后的樱花小城','樱花树下的静谧月台'];
+---
+<div class="essay-story" data-pagefind-body>
+  <div class="essay-intro">{paragraphs.slice(0,4).map(paragraph => <p>{paragraph}</p>)}</div>
+  <div class="essay-scenes">
+    {scenes.map((scene, index) => <section class:list={['essay-scene', `essay-scene-${index + 1}`]}><img class="essay-scene-image" src={`/assets/${scene}.webp`} alt={captions[index]} width="1600" height="533" loading="lazy" decoding="async" /><div class="essay-passage"><p>{paragraphs[index + 4]}</p></div></section>)}
+  </div>
+  <div class="essay-ending"><p>{paragraphs[8]}</p><p class="essay-signature">Wangles<br /><span>2025.5</span></p></div>
+</div>

@@ -4,6 +4,7 @@ import { onMount } from "svelte";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getPostUrlBySlug } from "../utils/url-utils";
+import { formatDateToYYYYMMDD, formatDateLabel } from "../utils/date-utils";
 
 export let tags: string[] = [];
 export let categories: string[] = [];
@@ -21,6 +22,7 @@ interface Post {
 		tags: string[];
 		category?: string | null;
 		published: Date;
+		datePrecision?: 'day' | 'month';
 	};
 }
 
@@ -31,10 +33,8 @@ interface Group {
 
 let groups: Group[] = [];
 
-function formatDate(date: Date) {
-	const month = (date.getMonth() + 1).toString().padStart(2, "0");
-	const day = date.getDate().toString().padStart(2, "0");
-	return `${month}-${day}`;
+function formatDate(date: Date, precision: 'day' | 'month' = 'day') {
+	return precision === 'month' ? formatDateLabel(date, precision) : formatDateToYYYYMMDD(date).slice(5);
 }
 
 function formatTag(tagList: string[]) {
@@ -112,7 +112,7 @@ onMount(async () => {
                     <div class="flex flex-row justify-start items-center h-full">
                         <!-- date -->
                         <div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
-                            {formatDate(post.data.published)}
+                            {formatDate(post.data.published, post.data.datePrecision)}
                         </div>
 
                         <!-- dot and line -->

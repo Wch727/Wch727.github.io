@@ -1,0 +1,10 @@
+export const workDetails: Record<string,{kind:string; year:string; creator:string; paragraphs:string[]; official:string}> = {
+  'your-name': {kind:'动画电影',year:'2016',creator:'新海诚', paragraphs:['故事从两个陌生的高中生交换身体开始。东京与地方小镇的生活差异，成为他们了解彼此的起点；留言、梦境与记忆，又让这段关系逐渐超出日常。','彗星、风景和城市里的细小动作，在影片中与寻找和相逢相连。叙事不断改变观看者对时间与距离的理解，也让名字成为记忆的一部分。'],official:'https://www.kiminona.com/'},
+  weathering: {kind:'动画电影',year:'2019',creator:'新海诚',paragraphs:['帆高离开故乡来到东京，在陌生的城市中遇见阳菜。持续的降雨与少女让天空放晴的能力，使他们的日常生活和城市的天气联系在一起。','雨水、云层与阳光构成了鲜明的视觉变化。故事也围绕生存、关系和选择展开：当个人的愿望与周围的世界发生冲突，决定便不再轻松。'],official:'https://www.tenkinoko.com/'},
+  'five-centimeters': {kind:'动画电影',year:'2007',creator:'新海诚',paragraphs:['影片由樱花抄、宇航员和秒速五厘米三部分组成，沿着少年到成年人的时间，观察相近的人如何渐渐走向不同的生活。','车站、雪夜、信件和铁道是反复出现的意象。与宏大的奇迹相比，它更关注日常里的距离，以及一段关系在记忆中继续存在的方式。'],official:'https://www.cwfilms.jp/5cm/story/'},
+  garden: {kind:'动画电影',year:'2013',creator:'新海诚',paragraphs:['孝雄想成为鞋匠，雨天来到庭园画鞋子的草图。在亭中，他遇见独自坐着的雪野；两人的关系就在一次次避雨和交谈中展开。','短片把雨、植物、脚步和声音放在很细的位置。两人各自面对的困境，与这段相遇中的陪伴和距离，构成了故事的核心。'],official:'https://www.kotonohanoniwa.jp/'},
+  fireflies: {kind:'动画电影',year:'2011',creator:'原作：绿川幸 · 导演：大森贵弘',paragraphs:['萤在森林中迷路后遇见阿银，此后每个夏天都会回到那里。能够相见，却不能触碰的规则，让日常的游玩与陪伴始终带着距离。','森林、面具和夏日的光构成了故事的气息。随着萤长大，时间也改变着两人的关系；影片用相对克制的叙事表现亲近与告别。'],official:'https://www.aniplex.co.jp/lineup/hotarubi/'},
+  'spy-family': {kind:'电视动画',year:'2022',creator:'原作：远藤达哉',paragraphs:['为了接近任务目标，间谍黄昏化名洛伊德，组建了福杰一家。妻子约尔与女儿阿尼亚也各有秘密，只有能读心的阿尼亚知道家庭成员的隐藏身份。','任务与学校生活带来许多喜剧情境，也让临时建立的家庭逐渐产生真实的关心。动作、秘密和日常，是这部作品相互连接的三部分。'],official:'https://spy-family.net/tvseries/'},
+  sao: {kind:'电视动画',year:'2012',creator:'原作：川原砾',paragraphs:['故事的起点是无法退出的虚拟现实游戏。桐人和其他玩家必须在艾恩葛朗特中生存、协作和攻略楼层，虚拟世界中的选择直接关联现实生命。','作品将游戏规则、战斗与角色关系放在一起。除了冒险本身，也关注玩家怎样在这个世界里建立联系，并重新理解现实与虚拟之间的边界。'],official:'https://www.swordart-online.net/'},
+  nailoong: {kind:'动画系列',year:'',creator:'第七印象',paragraphs:['奶龙是第七印象创作的原创动画形象。这个呆萌的外星幼龙与好友小七，一起面对生活中的小问题，也不断进入新的冒险。','吃东西、卖萌和充满自信的小想法，让奶龙的故事带着热闹的喜剧感。它也是这个网站的吉祥物，可以跟随鼠标，也可以随时收起。'],official:'https://www.nailoong.com/ipStar/Nailong/'}
+};
