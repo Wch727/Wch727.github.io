@@ -7,7 +7,7 @@ tags: ["自适应推理", "Qwen3", "论文复现"]
 lang: zh_CN
 ---
 
-这篇笔记整理 [sonata-reproduction](https://github.com/Wch727/sonata-reproduction) 中的方法与实现。复现围绕 Qwen3-8B 展开，重点是让模型在生成答案之前，判断是否需要进入思考模式。
+这篇笔记整理 sonata-reproduction 中的方法与实现。复现围绕 Qwen3-8B 展开，重点是让模型在生成答案之前，判断是否需要进入思考模式。
 
 ## 问题：每道题都需要长时间思考吗？
 
@@ -42,11 +42,8 @@ $$
 
 ## 目前的实现边界
 
-公开仓库针对 Qwen3-8B 整理了这套流程，还没有记录完整的最终对照结果。隐藏状态标准化、训练集与验证集划分，以及检查点选择等细节，也在对齐说明中标注为实现假设。
+复现项目针对 Qwen3-8B 整理了这套流程，还没有记录完整的最终对照结果。隐藏状态标准化、训练集与验证集划分，以及检查点选择等细节，也在对齐说明中标注为实现假设。
 
 另外，仓库的本地 LiveCodeBench 执行器只用于诊断，不代表官方评测结果。复现代码、流程与最终达到论文指标，是需要分别说明的事情。
 
-## 继续阅读
-
-- [复现仓库与运行步骤](https://github.com/Wch727/sonata-reproduction)
-- [论文设定、实现假设与对齐条件](https://github.com/Wch727/sonata-reproduction/blob/main/docs/PAPER_ALIGNMENT.md)
+源码仓库目前未公开，本文保留方法与复现流程的整理。

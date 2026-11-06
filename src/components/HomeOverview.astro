@@ -1,0 +1,46 @@
+---
+import { getSortedPosts } from '../utils/content-utils';
+import { getPostUrlBySlug } from '../utils/url-utils';
+import FavoritePreview from './FavoritePreview.astro';
+import '../styles/home.css';
+const all = await getSortedPosts();
+const order = ['connect6', 'loopvl-local-deploy', 'algorithm-notebook', 'claude-statusline', 'claude-net-tools', 'video-transcriber', 'kaggriculture-agent', 'long-march'];
+const projects = order.map(slug => all.find(p => p.slug === slug)).filter(Boolean);
+const notes = all.filter(p => ['论文复现', '学习笔记'].includes(p.data.category || ''));
+const covers: Record<string, {file: string; alt: string; kind: string}> = {
+  'connect6': {file:'connect6.svg',alt:'六子棋棋盘与策略价值搜索示意',kind:'棋盘与搜索示意'},
+  'loopvl-local-deploy': {file:'loopvl.svg',alt:'LoopVL 图片输入、推理和按需释放流程',kind:'使用流程示意'},
+  'algorithm-notebook': {file:'algorithm.svg',alt:'算法手册章节与并查集代码排版',kind:'手册内容示意'},
+  'claude-statusline': {file:'statusline.svg',alt:'终端状态栏的上下文、Token 与用量账本结构',kind:'终端信息示意'},
+  'claude-net-tools': {file:'net-tools.svg',alt:'搜索、网页读取与文档快照续读流程',kind:'工具流程示意'},
+  'video-transcriber': {file:'video-transcriber.webp',alt:'Video Text Extractor 真实桌面转写工作台截图',kind:'真实界面截图'},
+  'kaggriculture-agent': {file:'kaggriculture.svg',alt:'农田与 observation、policy、action 决策流程示意',kind:'策略流程示意'},
+  'long-march': {file:'long-march.svg',alt:'长征主题作品路线导览与知识问答示意',kind:'内容结构示意'},
+};
+const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
+---
+<div class="home-overview">
+  <header class="home-intro">
+    <div><p class="home-eyebrow">WANGLES / 个人小站</p><h1>你好，我是 <span class="home-name">Wangles</span></h1><p class="home-intro-line">在晴空下，慢慢探索。</p><p class="home-bio">在中国人民大学高瓴人工智能学院学习。关注强化学习、Agent Memory 与 Agent Harness，也参加 ICPC / CCPC。</p><nav aria-label="个人链接"><a href="/about/">关于我 <span>↗</span></a><a href="https://github.com/Wch727" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></nav></div>
+    <a class="home-portrait" href="/about/" aria-label="关于 Wangles"><img src="/assets/muichiro-hero.png" alt="时透无一郎插画" width="360" height="300" /></a>
+  </header>
+  <nav class="home-contents" aria-label="首页内容"><a href="#projects">项目 <span>↓</span></a><a href="#writing">笔记与随笔 <span>↓</span></a><a href="#favorites">喜欢的作品 <span>↓</span></a></nav>
+  <section id="projects" class="home-projects" aria-labelledby="home-project-title">
+    <div class="home-section-heading"><div><p class="home-eyebrow">PROJECTS</p><h2 id="home-project-title">把想法写进代码</h2></div><a href="/archive/">全部文章 ↗</a></div>
+    <div class="home-project-grid">{projects.map((post, index) => post && <article class:list={["home-project", {"home-project-featured": index < 2, "home-project-compact": index >= 2}]}>
+      <figure class="home-project-cover"><img src={`/assets/projects/${covers[post.slug].file}`} alt={covers[post.slug].alt} width="1000" height="600" loading="lazy" decoding="async" /><figcaption>{covers[post.slug].kind}</figcaption></figure>
+      <div class="home-project-body">
+      <div class="home-project-top"><span>{post.data.category}</span><span aria-hidden="true">↗</span></div>
+      <h3><a href={getPostUrlBySlug(post.slug)}>{post.data.title}</a></h3>
+      <p>{post.data.description}</p>
+      <ul aria-label="项目标签">{post.data.tags.slice(0,3).map(tag => <li>{tag}</li>)}</ul>
+    </div></article>)}</div>
+  </section>
+  <section id="writing" class="home-writing" aria-labelledby="home-writing-title">
+    <div class="home-section-heading"><div><p class="home-eyebrow">NOTES & WORDS</p><h2 id="home-writing-title">知识笔记与随笔</h2></div><a href="/learning/">知识笔记 ↗</a></div>
+    <div class="home-writing-grid"><div class="home-notes">{notes.map(post => <a href={getPostUrlBySlug(post.slug)}><span>{post.data.category}</span><h3>{post.data.title}</h3><p>{post.data.description}</p><span class="home-read">阅读笔记 ↗</span></a>)}</div>
+    {essay && <a class="home-essay" href={getPostUrlBySlug(essay.slug)}><img src="/assets/essay-cherry-rain.webp" alt="雨中的樱花" width="900" height="600" loading="lazy" /><div><span>随笔 · 2025.5</span><h3>雨落无声，樱逝无痕</h3><p>关于成年、相遇，和那些留在心里的事。</p><span class="home-read">读这篇随笔 ↗</span></div></a>}
+    </div>
+  </section>
+  <div id="favorites"><FavoritePreview /></div>
+</div>

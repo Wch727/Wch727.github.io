@@ -1,4 +1,73 @@
 ---
 import MainGridLayout from '../layouts/MainGridLayout.astro';
+const friends = [
+  { name: 'Nevertheless', url: 'https://nevertheless.eu.cc/', domain: 'nevertheless.eu.cc', image: '/assets/friend-nevertheless.webp', description: '思考、学习，也记录生活里的小事。', tone: 'blossom' },
+  { name: '叶耀之', url: 'https://yeyaozhi.eu.cc/', domain: 'yeyaozhi.eu.cc', image: '/assets/friend-yeyaozhi.webp', description: '数学与智能，笔墨与山水。', tone: 'mountain' },
+];
 ---
-<MainGridLayout title="友链"><section class="card-base collection"><p class="welcome-label">路过这些小站</p><h1 class="collection-title">在别处，继续相遇。</h1><div class="shelf" style="margin-top:24px"><a class="shelf-item" href="https://nevertheless.eu.cc/" target="_blank" rel="noopener noreferrer"><h2>Nevertheless ↗</h2><p>思考、学习与日常</p></a><a class="shelf-item" href="https://yeyaozhi.eu.cc/" target="_blank" rel="noopener noreferrer"><h2>叶耀之 ↗</h2><p>学习、写作与 AI 探索</p></a></div></section></MainGridLayout>
+<MainGridLayout title="友链" description="一些我常去的个人网站。">
+  <section class="card-base friends-page">
+    <header class="friends-heading">
+      <p class="friends-kicker">FRIENDS & NEIGHBORS</p>
+      <h1>友链<span aria-hidden="true"> ↗</span></h1>
+      <p class="friends-intro">一些我常去的小站。点进去看看他们的世界。</p>
+    </header>
+    <div class="friends-grid">
+      {friends.map((friend) => (
+        <a class:list={['friend-card', friend.tone]} href={friend.url} target="_blank" rel="noopener noreferrer" aria-label={`访问 ${friend.name} 的网站（新标签页）`}>
+          <div class="friend-preview">
+            <img src={friend.image} alt={`${friend.name} 的网站首页预览`} width="1280" height="800" />
+            <span class="friend-visit" aria-hidden="true">去逛逛 <span>↗</span></span>
+          </div>
+          <div class="friend-info">
+            <div class="friend-title"><h2>{friend.name}</h2><span class="friend-arrow" aria-hidden="true">↗</span></div>
+            <p class="friend-description">{friend.description}</p>
+            <span class="friend-domain">{friend.domain}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <p class="friends-footnote">偶尔串门，常有收获。</p>
+  </section>
+</MainGridLayout>
+
+<style>
+  .friends-page { --friend-ink: #314e56; padding: 40px 34px 28px; }
+  :global(.dark) .friends-page { --friend-ink: #d4e2e3; }
+  .friends-heading { margin-bottom: 30px; }
+  .friends-kicker { font: 500 10px/1.5 'Instrument Sans', sans-serif; letter-spacing: .19em; color: var(--friend-ink); opacity: .55; }
+  .friends-heading h1 { margin: 10px 0 12px; font: 400 36px/1.4 'Noto Serif SC', serif; letter-spacing: .12em; color: var(--friend-ink); }
+  .friends-heading h1 span { display: inline-block; margin-left: 8px; font: 300 26px/1 'Instrument Sans', sans-serif; color: #719da6; }
+  .friends-intro { font-size: 13px; line-height: 1.9; color: var(--friend-ink); opacity: .7; }
+  .friends-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .friend-card { --friend-accent: #92728e; display: block; min-width: 0; border: 1px solid var(--line-color); border-radius: 15px; overflow: hidden; color: var(--friend-ink); background: var(--card-bg); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .friend-card.mountain { --friend-accent: #63847a; }
+  .friend-preview { position: relative; aspect-ratio: 1.6; overflow: hidden; background: #eceff0; border-bottom: 1px solid var(--line-color); }
+  .friend-preview img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+  .friend-visit { position: absolute; right: 12px; bottom: 12px; padding: 5px 11px; border-radius: 20px; background: #fffef5ee; color: #314851; font-size: 11px; box-shadow: 0 2px 12px #233e4912; opacity: 0; transform: translateY(5px); transition: opacity .25s ease, transform .25s ease; }
+  .friend-visit span { margin-left: 7px; }
+  .friend-info { padding: 20px 20px 18px; }
+  .friend-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .friend-title h2 { font: 400 22px/1.5 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+  .friend-arrow { flex: 0 0 auto; font: 300 20px/1 'Instrument Sans', sans-serif; color: var(--friend-accent); transition: transform .25s ease; }
+  .friend-description { margin: 9px 0 18px; font-size: 12px; line-height: 1.9; opacity: .72; }
+  .friend-domain { display: block; padding-top: 12px; border-top: 1px solid var(--line-color); font: 400 10px/1.8 'Instrument Sans', sans-serif; letter-spacing: .025em; opacity: .55; overflow-wrap: anywhere; }
+  .friend-card:hover { transform: translateY(-4px); border-color: var(--friend-accent); box-shadow: 0 12px 28px #284d5a0c; }
+  .friend-card:hover .friend-preview img { transform: scale(1.025); }
+  .friend-card:hover .friend-visit, .friend-card:focus-visible .friend-visit { opacity: 1; transform: translateY(0); }
+  .friend-card:hover .friend-arrow { transform: translate(2px, -2px); }
+  .friend-card:focus-visible { outline: 2px solid var(--friend-accent); outline-offset: 4px; }
+  .friends-footnote { margin-top: 26px; font: 400 12px/1.8 'Noto Serif SC', serif; letter-spacing: .08em; color: var(--friend-ink); opacity: .5; }
+  @media (max-width: 640px) {
+    .friends-page { padding: 28px 22px 24px; }
+    .friends-heading { margin-bottom: 24px; }
+    .friends-heading h1 { font-size: 30px; }
+    .friends-grid { grid-template-columns: 1fr; gap: 20px; }
+    .friend-info { padding: 18px 20px; }
+    .friend-visit { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .friend-card, .friend-preview img, .friend-visit, .friend-arrow { transition: none; }
+    .friend-card:hover, .friend-card:hover .friend-preview img, .friend-card:hover .friend-arrow { transform: none; }
+  }
+</style>

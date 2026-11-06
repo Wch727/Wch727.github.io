@@ -44,4 +44,4 @@ python scripts/evaluate.py --agent expert --opponent starter --seeds 100 --paire
 
 README 中的历史快照为 **2026 年 9 月 23 日**，记录 Elo 1752.9、排名 2096。这里保留这一实验时间点，不把它写成实时榜单成绩。
 
-[查看仓库](https://github.com/Wch727/kaggriculture-agent) · [项目研发记录](https://github.com/Wch727/kaggriculture-agent/blob/main/docs/project-history.md)
+源码仓库目前未公开，这里保留此前整理的项目介绍与实验记录。

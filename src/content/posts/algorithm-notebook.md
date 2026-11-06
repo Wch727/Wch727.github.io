@@ -278,3 +278,7 @@ python _台账/生成PDF.py
 算法选材参考 OI Wiki 和 ICPC / CCPC 题解。部分实现来自第三方资料，具体来源与许可保留在文件注释中。
 
 [查看仓库](https://github.com/Wch727/icpc-algorithm-template) · [使用说明与目录](https://github.com/Wch727/icpc-algorithm-template#readme)
+
+## 手册与代码可读性
+
+后续整理进一步展开了复杂模板的控制流程，并改善手册阅读体验。查阅时可以先按章节找到算法，再对照独立源文件理解分支和循环。
