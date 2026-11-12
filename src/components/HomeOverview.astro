@@ -4,10 +4,11 @@ import { getPostUrlBySlug } from '../utils/url-utils';
 import FavoritePreview from './FavoritePreview.astro';
 import '../styles/home.css';
 const all = await getSortedPosts();
-const order = ['connect6', 'loopvl-local-deploy', 'algorithm-notebook', 'claude-statusline', 'claude-net-tools', 'video-transcriber', 'kaggriculture-agent', 'long-march'];
+const order = ['heart-harbor', 'connect6', 'loopvl-local-deploy', 'algorithm-notebook', 'claude-statusline', 'claude-net-tools', 'video-transcriber', 'kaggriculture-agent', 'long-march'];
 const projects = order.map(slug => all.find(p => p.slug === slug)).filter(Boolean);
 const notes = all.filter(p => ['论文复现', '学习笔记'].includes(p.data.category || ''));
 const covers: Record<string, {file: string; alt: string; kind: string}> = {
+  'heart-harbor': {file:'heart-harbor.webp',alt:'心港首页，展示陪伴聊天和情绪签到入口',kind:'实际页面截图'},
   'connect6': {file:'connect6.svg',alt:'六子棋棋盘与策略价值搜索示意',kind:'棋盘与搜索示意'},
   'loopvl-local-deploy': {file:'loopvl.svg',alt:'LoopVL 图片输入、推理和按需释放流程',kind:'使用流程示意'},
   'algorithm-notebook': {file:'algorithm.svg',alt:'算法手册章节与并查集代码排版',kind:'手册内容示意'},
