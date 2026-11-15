@@ -1,7 +1,7 @@
 ---
 title: "tzb_website"
 published: 2026-05-08T09:50:20+08:00
-description: "为大创申报准备的长征主题作品，结合路线导览、知识库问答与剧情答题。"
+description: "为大创申报做的长征主题互动网站，沿路线浏览历史内容，再通过知识库问答和剧情闯关继续探索。"
 category: "互动项目"
 tags: ["长征", "RAG", "Streamlit"]
 lang: zh_CN

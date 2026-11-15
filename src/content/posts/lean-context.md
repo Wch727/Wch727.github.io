@@ -1,7 +1,7 @@
 ---
 title: "lean-context"
 published: 2026-11-12
-description: "一个尚未做完的 OpenClaw 上下文压缩原型，试过裁剪工具输出和保留任务进度，现已归档。"
+description: "为 OpenClaw 长任务试做的上下文压缩插件：裁剪工具输出、保留任务进度。原型没做完，现已归档。"
 category: "开发工具"
 tags: ["OpenClaw", "Agent Harness", "上下文压缩"]
 lang: zh_CN

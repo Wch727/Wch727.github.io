@@ -1,7 +1,7 @@
 ---
 title: "kaggriculture-agent"
 published: 2026-09-25T15:46:26+08:00
-description: "围绕种植、用水、工人和市场交易搭建策略与评测工具，并尝试行为克隆。"
+description: "在 Kaggriculture 双人农场模拟中尝试做 Agent：从规则策略和对局评测入手，也试过行为克隆。"
 category: "博弈实验"
 tags: ["Kaggle", "策略学习", "行为克隆"]
 lang: zh_CN

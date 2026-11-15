@@ -1,7 +1,7 @@
 ---
 title: "video-transcriber"
 published: 2026-05-18T15:11:32+08:00
-description: "从英语视频转文字，到支持本地转写、播放跟随、校对阅读与草稿恢复的桌面工具。"
+description: "最初为英语作业写的视频转文字工具，后来做成能本地转写、回听校对和恢复草稿的桌面程序。"
 category: "开发工具"
 tags: ["语音转写", "SenseVoice", "Whisper", "字幕"]
 lang: zh_CN

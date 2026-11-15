@@ -1,7 +1,7 @@
 ---
 title: "claude-code-net-tools"
 published: 2026-07-31T22:10:54+08:00
-description: "起因是此前 Claude Code 使用第三方 API 时，无法使用 Web Search。"
+description: "给第三方 API 下的 Claude Code 补了联网工具：搜索网页、读取长文档，必要时调用浏览器处理动态页面。"
 category: "开发工具"
 tags: ["Claude Code", "MCP", "联网搜索"]
 lang: zh_CN

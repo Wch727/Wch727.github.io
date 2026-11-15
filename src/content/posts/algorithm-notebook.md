@@ -1,7 +1,7 @@
 ---
 title: "icpc-algorithm-template"
 published: 2026-10-05T21:02:31+08:00
-description: "和 Codex 一起搭建的算法模板库，整理 ICPC / CCPC 训练与比赛需要的代码、说明和打印手册。"
+description: "备赛 ICPC / CCPC 时整理的 C++ 算法模板库，附有用法说明、复杂度、测试和可打印的比赛手册。"
 category: "算法竞赛"
 tags: ["ICPC", "CCPC", "C++"]
 lang: zh_CN

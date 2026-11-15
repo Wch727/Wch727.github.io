@@ -1,7 +1,7 @@
 ---
 title: "sonata-reproduction"
 published: 2026-08-09T16:02:35+08:00
-description: "从自一致性预测到思考模式路由，梳理 Sonata 的方法、Qwen3-8B 复现流程和实现边界。"
+description: "在 Qwen3-8B 上尝试复现 Sonata：用隐藏状态预测直接作答的可靠程度，再决定是否开启思考模式。"
 category: "论文复现"
 tags: ["自适应推理", "Qwen3", "论文复现"]
 lang: zh_CN
