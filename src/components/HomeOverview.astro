@@ -7,16 +7,15 @@ const all = await getSortedPosts();
 const featuredProjects = ['connect6', 'algorithm-notebook'];
 const order = [
   ...featuredProjects,
-  'claude-statusline',
   'video-transcriber',
+  'claude-statusline',
+  'claude-net-tools',
   'loopvl-local-deploy',
   'kaggriculture-agent',
-  'claude-net-tools',
   'heart-harbor',
-  'long-march',
-  'lean-context',
 ];
 const projects = order.map(slug => all.find(p => p.slug === slug)).filter(Boolean);
+const featuredCount = projects.filter(post => featuredProjects.includes(post.slug)).length;
 const openSourceNote = all.find(post => post.slug === 'computer-apply');
 const notes = all.filter(p => ['论文复现', '学习笔记'].includes(p.data.category || ''));
 const covers: Partial<Record<string, {file: string; alt: string; kind: string}>> = {
@@ -34,19 +33,26 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
 ---
 <div class="home-overview">
   <header class="home-intro">
-    <div><p class="home-eyebrow">WANGLES / 个人小站</p><h1>你好，我是 <span class="home-name">Wangles</span></h1><p class="home-intro-line">在晴空下，慢慢探索。</p><p class="home-bio">在中国人民大学高瓴人工智能学院学习。关注强化学习、Agent Memory 与 Agent Harness，也参加 ICPC / CCPC，获得 2026 CCPC 乐山站铜牌。</p><nav aria-label="个人链接"><a href="/about/">关于我 <span>↗</span></a><a href="https://github.com/Wch727" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></nav></div>
+    <div><p class="home-eyebrow">WANGLES / 个人小站</p><h1>你好，我是 <span class="home-name">Wangles</span></h1><p class="home-intro-line">在晴空下，慢慢探索。</p><p class="home-bio">在中国人民大学高瓴人工智能学院读本科。平时参加 ICPC / CCPC，也喜欢尝试强化学习、Agent 和一些自己用得上的小工具。2026 CCPC 乐山站铜牌。</p><nav aria-label="个人链接"><a href="/about/">关于我 <span>↗</span></a><a href="https://github.com/Wch727" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a></nav></div>
     <a class="home-portrait" href="/about/" aria-label="关于 Wangles"><img src="/assets/muichiro-hero.png" alt="时透无一郎插画" width="360" height="300" /></a>
   </header>
   <nav class="home-contents" aria-label="首页内容"><a href="#projects">项目 <span>↓</span></a><a href="#writing">笔记与随笔 <span>↓</span></a><a href="#favorites">喜欢的作品 <span>↓</span></a></nav>
   <section id="projects" class="home-projects" aria-labelledby="home-project-title">
     <div class="home-section-heading"><div><p class="home-eyebrow">PROJECTS</p><h2 id="home-project-title">把想法写进代码</h2></div><a href="/archive/">全部文章 ↗</a></div>
     <div class="home-project-grid">
-      {projects.map((post) => {
+      {projects.map((post, index) => {
         if (!post) return null;
         const cover = covers[post.slug];
         const featured = featuredProjects.includes(post.slug);
         return (
-          <article class:list={['home-project', {
+          <>
+            {index === featuredCount && (
+              <div class="home-project-break">
+                <span>其他项目</span>
+                <a href="/archive/">更多内容 ↗</a>
+              </div>
+            )}
+            <article class:list={['home-project', {
             'home-project-featured': featured,
             'home-project-compact': !featured,
           }]}>
@@ -62,7 +68,8 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
               <p>{post.data.description}</p>
               <ul aria-label="项目标签">{post.data.tags.slice(0, 3).map(tag => <li>{tag}</li>)}</ul>
             </div>
-          </article>
+            </article>
+          </>
         );
       })}
     </div>
