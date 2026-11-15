@@ -12,5 +12,5 @@ const captions = english
   <div class="essay-scenes">
     {scenes.map((scene, index) => <section class:list={['essay-scene', `essay-scene-${index + 1}`]}><img class="essay-scene-image" src={`/assets/${scene}.webp`} alt={captions[index]} width="1600" height="533" loading="lazy" decoding="async" /><div class="essay-passage"><p>{paragraphs[index + 4]}</p></div></section>)}
   </div>
-  <div class="essay-ending"><p>{paragraphs[8]}</p><p class="essay-signature">Wangles<br /><span>{english ? 'May 2025' : '2025.5'}</span></p></div>
+  <div class="essay-ending">{paragraphs.slice(8).map(paragraph => <p>{paragraph}</p>)}<p class="essay-signature">Wangles<br /><span>{english ? 'May 2025' : '2025.5'}</span></p></div>
 </div>

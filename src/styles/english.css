@@ -1,4 +1,7 @@
 .english-reading {
+  --en-ink: #30464c;
+  --en-muted: #63777e;
+  color: var(--en-ink);
   max-width: 64rem;
   margin: 0 auto;
   padding: clamp(1.2rem, 4vw, 3.1rem);
@@ -7,7 +10,7 @@
 .english-reading h1 {
   overflow-wrap: anywhere;
   font: 400 clamp(2rem, 5.2vw, 3rem)/1.12 'EB Garamond', Georgia, serif;
-  color: var(--tw-prose-headings, var(--btn-content));
+  color: var(--en-ink);
 }
 
 .english-article-header {
@@ -19,10 +22,10 @@
 .english-post-meta {
   font: 400 .81rem/1.5 'Instrument Sans', sans-serif;
   margin: 0 0 .45rem;
-  color: var(--btn-content);
+  color: var(--en-muted);
 }
 
-.english-lead { margin: .8rem 0 1.2rem; }
+.english-lead { margin: .8rem 0 1.2rem; color: var(--en-muted); }
 .english-post-list { list-style: none; padding: 0; margin: 0; }
 .english-post-list li { padding: 1.05rem 0; border-top: 1px solid var(--line-divider); }
 .english-post-list h2, .english-friends h2 { font-size: 1.45rem; overflow-wrap: anywhere; }
@@ -35,4 +38,10 @@
 
 @media (max-width: 600px) {
   .english-friends { grid-template-columns: 1fr; }
+}
+
+/* Text outside Markdown's prose-invert wrapper must respond to the site theme too. */
+.dark .english-reading {
+  --en-ink: #dae7e9;
+  --en-muted: #aebfc5;
 }

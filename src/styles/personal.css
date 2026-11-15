@@ -2,7 +2,9 @@
 @font-face{font-family:'Instrument Sans';src:url('/assets/fonts/instrument-sans-regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Instrument Sans';src:url('/assets/fonts/instrument-sans-medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:'Instrument Serif';src:url('/assets/fonts/instrument-serif-regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-body{font-family:'EB Garamond','Noto Serif SC',Georgia,serif;line-height:1.9}
+body{font-family:'EB Garamond','Noto Serif SC',Georgia,serif;line-height:1.9;color:#30464c}
+/* Keep inherited copy legible when the site switches to dark mode. */
+.dark body{color:#dae7e9}
 /* Keep controls crisp; reserve book typography for editorial content. */
 #navbar,#sidebar,.btn-regular,.btn-plain,.footer,.home-intro nav,.home-contents,.home-section-heading>a,.home-source-note,.home-notes>a>span,.home-read,.home-essay span{font-family:'Instrument Sans','Noto Sans SC',sans-serif}
 .template-directory{margin:22px 0}.template-chapter{border:1px solid var(--line-color);border-radius:12px;margin:12px 0;overflow:hidden}.template-chapter summary{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;padding:14px 18px;background:var(--btn-regular-bg);color:var(--btn-content);font-weight:500;list-style:none}.template-chapter summary::before{content:'+';font-family:'Instrument Sans',sans-serif}.template-chapter[open] summary::before{content:'−'}.template-chapter summary span{margin-left:auto;font-size:11px;font-weight:400;white-space:nowrap}.template-file-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;padding:18px}.custom-md .template-file-grid a{font-size:13px;line-height:1.8;overflow-wrap:anywhere;text-decoration:none;display:block;padding:4px 0;margin:0}.template-chapter summary:focus-visible{outline:2px solid var(--primary);outline-offset:-3px}@media(max-width:767px){.template-file-grid{grid-template-columns:1fr;padding:14px 18px}.template-chapter summary{padding:12px 16px}}
