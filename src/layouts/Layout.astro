@@ -101,12 +101,8 @@ const bannerOffset =
 		<meta name="twitter:description" content={description || pageTitle}>
 
 		<meta name="viewport" content="width=device-width" />
-		<!-- Typography: EB Garamond for Latin and LXGW WenKai Screen for Chinese headings. -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web@1.522.0/lxgwwenkaiscreen/result.css" />
+		<!-- WenKai's full-coverage unicode-range webfont files are mirrored at build time. -->
+		<link rel="stylesheet" href="/assets/fonts/lxgwwenkaiscreen/result.css" />
 		<meta name="generator" content={Astro.generator} />
 		{favicons.map(favicon => (
 			<link rel="icon"

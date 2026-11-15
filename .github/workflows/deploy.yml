@@ -23,6 +23,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Bundle complete editorial fonts for self-hosting
+        run: python3 tools/bundle-editorial-fonts.py
       - run: pnpm check
       - run: pnpm build
       - uses: actions/configure-pages@v5
