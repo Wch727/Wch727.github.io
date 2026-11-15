@@ -25,6 +25,6 @@ At dusk, the downpour will drown the little town; yet the clear sky lingering on
 
 The romance of adulthood is to give each drop of rain a name, and still let it fall; to count, in silence, five centimeters per second as the cherry blossoms drift away—and no longer give chase. When thunder rolls once more across a cloud-darkened sky, I can finally smile and say: “Look—even the sky is clumsily learning how to cry.”
 
-And finally, this wish: may the road ahead lead you to become the person you have always wanted to be. I wish it for you, and for myself.
+One last wish: may the years ahead find you living as the person you wish to be. A wish for myself, and for you.
 
 <p class="essay-signature">Wangles<br /><span>May 2025</span></p>
