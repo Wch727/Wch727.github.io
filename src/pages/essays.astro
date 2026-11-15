@@ -1,10 +1,18 @@
 ---
 import MainGridLayout from '../layouts/MainGridLayout.astro';
-import PostPage from '../components/PostPage.astro';
+import EssayPreview from '../components/EssayPreview.astro';
 import { getSortedPosts } from '../utils/content-utils';
 const essays = (await getSortedPosts()).filter(entry => entry.data.category === '随笔');
 ---
 <MainGridLayout title="随笔" description="Wangles 写下的文字。">
-  <section class="card-base welcome"><p class="welcome-label">写下来的心事</p><h1>随笔</h1><p>关于成长、喜欢的故事，以及日常里留下的念头。</p></section>
-  <PostPage page={{ data: essays }} />
+  <section class="card-base essay-index" data-pagefind-body>
+    <h1>随笔</h1>
+    <div class="essay-list">{essays.map(post => <EssayPreview post={post} />)}</div>
+  </section>
 </MainGridLayout>
+
+<style>
+  .essay-index { padding: clamp(20px, 4vw, 48px); }
+  h1 { font: 400 clamp(28px, 5vw, 46px)/1.2 'LXGW WenKai Screen', 'Noto Serif SC', serif; }
+  .essay-list { display: grid; gap: 24px; margin-top: 24px; }
+</style>

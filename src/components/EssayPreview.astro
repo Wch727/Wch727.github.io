@@ -1,0 +1,58 @@
+---
+import type { PostForList } from '../utils/content-utils';
+import { getPostUrlBySlug } from '../utils/url-utils';
+
+interface Props {
+  post: PostForList;
+  english?: boolean;
+  compact?: boolean;
+}
+
+const { post, english = false, compact = false } = Astro.props;
+const { title, description, published, datePrecision } = post.data;
+const illustrated = post.slug === 'rain-and-cherry-blossoms';
+const locale = english ? 'en' : 'zh-CN';
+const date = new Intl.DateTimeFormat(locale, {
+  year: 'numeric',
+  month: english ? 'long' : 'numeric',
+  day: datePrecision === 'month' ? undefined : 'numeric',
+  timeZone: 'Asia/Shanghai',
+}).format(published).replace(/^(\d+)年(\d+)月$/, '$1.$2');
+const href = (english ? '/en' : '') + getPostUrlBySlug(post.slug);
+---
+<a class:list={['essay-preview', { compact }]} href={href}>
+  {illustrated && <img src="/assets/essay-cherry-rain.webp" alt="" width="1920" height="662" decoding="async" />}
+  <div class="essay-preview-text">
+    <time datetime={published.toISOString()}>{date}</time>
+    {compact ? <h3>{title}</h3> : <h2>{title}</h2>}
+    <p>{description}</p>
+    <span class="essay-preview-read">{english ? 'Read the essay' : '读这篇随笔'} <span aria-hidden="true">↗</span></span>
+  </div>
+</a>
+
+<style>
+  .essay-preview {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--line-color);
+    border-radius: 12px;
+    background: #edf4f0;
+    color: #233a3d;
+  }
+  .essay-preview img { display: block; width: 100%; height: auto; }
+  .essay-preview-text { padding: clamp(20px, 4vw, 44px); }
+  time, .essay-preview-read { font: 500 13px/1.5 'Instrument Sans', 'Noto Sans SC', sans-serif; color: #426561; }
+  h2, h3 {
+    margin: .3em 0 .35em;
+    font: 400 clamp(25px, 3.6vw, 42px)/1.35 'EB Garamond', 'LXGW WenKai Screen', 'Noto Serif SC', serif;
+    overflow-wrap: anywhere;
+  }
+  p { max-width: 38em; line-height: 1.85; font-family: 'EB Garamond', 'Noto Serif SC', serif; }
+  .essay-preview-read { display: inline-block; margin-top: 1.1rem; }
+  .essay-preview:hover .essay-preview-read { text-decoration: underline; text-underline-offset: .25em; }
+  .essay-preview:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+  .compact .essay-preview-text { padding: 18px 22px 22px; }
+  .compact h3 { font-size: clamp(23px, 2.7vw, 29px); }
+  :global(.dark) .essay-preview { background: #243735; color: #e2eeea; }
+  :global(.dark) time, :global(.dark) .essay-preview-read { color: #b3d0c8; }
+</style>

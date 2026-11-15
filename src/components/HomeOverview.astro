@@ -2,6 +2,7 @@
 import { getSortedPosts } from '../utils/content-utils';
 import { getPostUrlBySlug } from '../utils/url-utils';
 import FavoritePreview from './FavoritePreview.astro';
+import EssayPreview from './EssayPreview.astro';
 import '../styles/home.css';
 const { english = false } = Astro.props;
 const prefix = english ? '/en' : '';
@@ -102,7 +103,7 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
   <section id="writing" class="home-writing" aria-labelledby="home-writing-title">
     <div class="home-section-heading"><div><p class="home-eyebrow">NOTES & WORDS</p><h2 id="home-writing-title">{english ? 'Notes and essays' : '知识笔记与随笔'}</h2></div><a href={`${prefix}/learning/`}>{english ? 'Study notes ↗' : '知识笔记 ↗'}</a></div>
     <div class="home-writing-grid"><div class="home-notes">{notes.map(post => <a href={postUrl(post.slug)}><span>{post.data.category}</span><h3>{post.data.title}</h3><p>{post.data.description}</p><span class="home-read">{english ? 'Read the notes ↗' : '阅读笔记 ↗'}</span></a>)}</div>
-    {essay && <a class="home-essay" href={postUrl(essay.slug)}><img src="/assets/essay-cherry-rain.webp" alt={english ? 'Cherry blossoms in the rain' : '雨中的樱花'} width="900" height="600" loading="lazy" /><div><span>{english ? 'Essay · May 2025' : '随笔 · 2025.5'}</span><h3>{essay.data.title}</h3><p>{english ? 'On growing older, the names we try to remember, and the things we learn to let go.' : '关于成年、相遇，和那些留在心里的事。'}</p><span class="home-read">{english ? 'Read the essay ↗' : '读这篇随笔 ↗'}</span></div></a>}
+    {essay && <EssayPreview post={essay} english={english} compact />}
     </div>
   </section>
   <div id="favorites"><FavoritePreview english={english} /></div>

@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getEntry, render } from "astro:content";
 import EssayScenes from "../../components/EssayScenes.astro";
+import EssayPreview from "../../components/EssayPreview.astro";
 import HomeOverview from "../../components/HomeOverview.astro";
 import Markdown from "../../components/misc/Markdown.astro";
 import EnglishFavorites from "../../components/EnglishFavorites.astro";
@@ -92,7 +93,9 @@ const friends = [
     <section class="card-base english-reading" data-pagefind-body>
       <h1>{page.title}</h1>
       <p class="english-lead">{listings[listKind]}</p>
-      <ul class="english-post-list">
+      {listKind === "essays" ? (
+        <div class="essay-list">{list.map(item => <EssayPreview post={item} english />)}</div>
+      ) : <ul class="english-post-list">
         {list.map(item => (
           <li>
             <h2><a href={`/en/posts/${item.slug}/`}>{item.data.title}</a></h2>
@@ -100,7 +103,7 @@ const friends = [
             <p>{item.data.description}</p>
           </li>
         ))}
-      </ul>
+      </ul>}
     </section>
   )}
 
@@ -122,3 +125,7 @@ const friends = [
   {page.kind === "favorites" && <EnglishFavorites />}
   {(page.kind === "work" || page.kind === "music") && <EnglishFavorites kind={page.kind} slug={page.slug} />}
 </MainGridLayout>
+
+<style>
+  .essay-list { display: grid; gap: 24px; }
+</style>
