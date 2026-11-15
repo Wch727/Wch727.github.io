@@ -20,16 +20,16 @@ const projects = order
 const featuredCount = projects.filter(post => featuredProjects.includes(post.slug)).length;
 const openSourceNote = all.find(post => post.slug === 'computer-apply');
 const notes = all.filter(p => ['论文复现', '学习笔记'].includes(p.data.category || ''));
-const covers: Partial<Record<string, {file: string; alt: string; kind: string}>> = {
-  'heart-harbor': {file:'heart-harbor.webp',alt:'心港首页，展示陪伴聊天和情绪签到入口',kind:'实际页面截图'},
-  'connect6': {file:'connect6.svg',alt:'六子棋棋盘与策略价值搜索示意',kind:'棋盘与搜索示意'},
-  'loopvl-local-deploy': {file:'loopvl.svg',alt:'LoopVL 图片输入、推理和按需释放流程',kind:'使用流程示意'},
-  'algorithm-notebook': {file:'algorithm.svg',alt:'算法手册章节与并查集代码排版',kind:'手册内容示意'},
-  'claude-statusline': {file:'statusline.svg',alt:'终端状态栏的上下文、Token 与用量账本结构',kind:'终端信息示意'},
-  'claude-net-tools': {file:'net-tools.svg',alt:'搜索、网页读取与文档快照续读流程',kind:'工具流程示意'},
-  'video-transcriber': {file:'video-transcriber.webp',alt:'Video Text Extractor 真实桌面转写工作台截图',kind:'真实界面截图'},
-  'kaggriculture-agent': {file:'kaggriculture.svg',alt:'农田与 observation、policy、action 决策流程示意',kind:'策略流程示意'},
-  'long-march': {file:'long-march.svg',alt:'长征主题作品路线导览与知识问答示意',kind:'内容结构示意'},
+const covers: Partial<Record<string, {file: string; alt: string}>> = {
+  'heart-harbor': {file:'heart-harbor.webp',alt:'心港首页，展示陪伴聊天和情绪签到入口'},
+  'connect6': {file:'connect6.svg',alt:'六子棋棋盘与策略价值搜索示意'},
+  'loopvl-local-deploy': {file:'loopvl.svg',alt:'LoopVL 图片输入、推理和按需释放流程'},
+  'algorithm-notebook': {file:'algorithm.svg',alt:'算法手册章节与并查集代码排版'},
+  'claude-statusline': {file:'statusline.svg',alt:'终端状态栏的上下文、Token 与用量账本结构'},
+  'claude-net-tools': {file:'net-tools.svg',alt:'搜索、网页读取与文档快照续读流程'},
+  'video-transcriber': {file:'video-transcriber.webp',alt:'Video Text Extractor 真实桌面转写工作台截图'},
+  'kaggriculture-agent': {file:'kaggriculture.svg',alt:'农田与 observation、policy、action 决策流程示意'},
+  'long-march': {file:'long-march.svg',alt:'长征主题作品路线导览与知识问答示意'},
 };
 const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
 ---
@@ -67,14 +67,11 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
             {cover && (
               <figure class="home-project-cover">
                 <img src={`/assets/projects/${cover.file}`} alt={cover.alt} width="1000" height="600" loading="lazy" decoding="async" />
-                <figcaption>{cover.kind}</figcaption>
               </figure>
             )}
             <div class="home-project-body">
-              <div class="home-project-top"><span>{post.data.category}</span><span aria-hidden="true">↗</span></div>
               <h3><a href={getPostUrlBySlug(post.slug)}>{post.data.title}</a></h3>
               <p>{post.data.description}</p>
-              <ul aria-label="项目标签">{post.data.tags.slice(0, 3).map(tag => <li>{tag}</li>)}</ul>
             </div>
             </article>
           </>

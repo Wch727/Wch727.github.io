@@ -36,13 +36,10 @@
 .home-project-cover{margin:0;position:relative;aspect-ratio:5/3;background:#e9eeec;overflow:hidden;border-bottom:1px solid var(--home-rule)}
 .home-project-cover img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .35s}
 .home-project:hover .home-project-cover img{transform:scale(1.025)}
-.home-project-cover figcaption{position:absolute;right:10px;bottom:8px;padding:2px 7px;border-radius:4px;background:#ffffffdb;color:#637c80;font-size:9px;line-height:1.6}
 .home-project-body{padding:18px 22px 21px;flex:1;min-width:0}
-.home-project-top{display:flex;justify-content:space-between;color:var(--home-muted);font-size:11px;line-height:1.6}
 .home-project h3{font:500 23px/1.4 'Instrument Sans','Noto Sans SC',sans-serif;margin:7px 0 8px;overflow-wrap:anywhere;letter-spacing:-.012em}
 .home-project h3 a::after{content:'';position:absolute;inset:0;border-radius:12px}
 .home-project p{font-size:14px;line-height:1.75;color:var(--home-muted)}
-.home-project ul{display:flex;gap:5px 12px;flex-wrap:wrap;margin-top:12px;font-size:11px;color:var(--home-muted)}
 .home-project-compact {
   padding: 16px;
 }
@@ -59,11 +56,9 @@
   border-radius: 6px;
 }
 .home-project-compact .home-project-cover img { object-fit: cover; }
-.home-project-compact .home-project-cover figcaption { display: none; }
 .home-project-compact .home-project-body { grid-area: 1 / 1; padding: 0; }
 .home-project-compact h3 { font-size: 17px; margin: 5px 0 6px; }
 .home-project-compact p { font-size: 13px; line-height: 1.7; }
-.home-project-compact ul { font-size: 10px; margin-top: 8px; gap: 4px 9px; }
 .home-source-note {
   display: flex;
   align-items: baseline;
