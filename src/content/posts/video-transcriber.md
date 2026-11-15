@@ -3,7 +3,7 @@ title: "video-transcriber"
 published: 2026-05-18T15:11:32+08:00
 description: "做英语作业时写的转写工具，现在能本地识别音视频、边听边改，还能恢复未保存的草稿。"
 category: "开发工具"
-tags: ["语音转写", "SenseVoice", "Whisper"]
+tags: []
 lang: zh_CN
 ---
 

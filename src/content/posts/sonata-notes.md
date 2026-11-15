@@ -3,7 +3,7 @@ title: "sonata-reproduction"
 published: 2026-08-09T16:02:35+08:00
 description: "在 Qwen3-8B 上尝试复现 Sonata：用隐藏状态预测直接作答的可靠程度，再决定是否开启思考模式。"
 category: "论文复现"
-tags: ["Sonata", "Qwen3-8B", "思考模式"]
+tags: ["LLM"]
 lang: zh_CN
 ---
 

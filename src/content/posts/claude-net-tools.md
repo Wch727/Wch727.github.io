@@ -3,7 +3,7 @@ title: "claude-code-net-tools"
 published: 2026-07-31T22:10:54+08:00
 description: "给 Claude Code 补了一套联网 MCP 工具，能搜索、读取网页与 PDF，必要时再调用浏览器。"
 category: "开发工具"
-tags: ["Claude Code", "MCP", "联网搜索"]
+tags: ["Claude Code"]
 lang: zh_CN
 ---
 

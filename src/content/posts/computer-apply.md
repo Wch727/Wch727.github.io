@@ -3,7 +3,7 @@ title: "铁程（computer_apply）"
 published: 2026-11-13
 description: "读过并 fork 的火车出行 Agent：从本地时刻表规划路线，再联网核对余票和票价。"
 category: "开源项目笔记"
-tags: ["火车出行", "Agent", "12306"]
+tags: ["Agent"]
 lang: zh_CN
 ---
 

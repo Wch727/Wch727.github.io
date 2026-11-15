@@ -5,7 +5,7 @@ datePrecision: month
 description: "成年的浪漫，是给每滴雨命名却任其坠落的诗意，是默数五厘米的秒速却不再追赶的温柔。"
 image: "/assets/essay-cherry-rain.webp"
 category: "随笔"
-tags: ["成年", "新海诚"]
+tags: []
 lang: zh_CN
 ---
 

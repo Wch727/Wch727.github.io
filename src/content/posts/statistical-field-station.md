@@ -3,7 +3,7 @@ title: "statistical-field-station"
 published: 2026-07-19T01:57:25+08:00
 description: "自己整理的数学建模学习站：17 章内容和交互示例、方法选择路线，也支持离线查阅。"
 category: "学习笔记"
-tags: ["数学建模", "统计学", "交互教程"]
+tags: ["数学建模"]
 lang: zh_CN
 ---
 
