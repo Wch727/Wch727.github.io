@@ -38,3 +38,6 @@
 @media(max-width:767px){.favorites-journal{padding:27px 22px 34px}.journal-header{padding-bottom:33px}.journal-film-list{grid-template-columns:1fr}.journal-film{grid-template-columns:21px minmax(105px,28%) minmax(0,1fr);padding:20px 0}.journal-film:nth-child(2){border-top:1px solid var(--journal-rule);padding-top:20px}.journal-film-lead{font-size:14px}.journal-musician-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px 14px}.journal-character{grid-template-columns:1fr}.journal-character img{max-height:240px}}
 @media(max-width:400px){.journal-film{grid-template-columns:16px 92px minmax(0,1fr);gap:8px}.journal-film-body h3{font-size:19px}.journal-film-lead{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.journal-film-poster img,.journal-musician img{transition:none}}
+
+/* Show the full home-list plot summaries rather than cutting off as teasers. */
+.journal-film-lead{font-size:14px;line-height:1.78}

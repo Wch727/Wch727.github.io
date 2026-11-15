@@ -10,3 +10,11 @@
 .favorite-review-page .favorite-review-body p:not(.favorite-review-kicker){font:400 18px/2.08 'EB Garamond','Noto Serif SC',serif;color:var(--btn-content);margin:0 0 1.5em}
 .favorite-review-page .favorite-review-body p:not(.favorite-review-kicker):last-child{margin-bottom:0}
 @media(max-width:767px){.favorite-review-page .favorite-review-body{margin-top:30px;padding-top:22px}.favorite-review-page .favorite-review-body p:not(.favorite-review-kicker){font-size:17px;line-height:2}}
+
+/* Plot synopsis is separate from the personal interpretation below it. */
+.favorite-review-page .favorite-synopsis-body{max-width:42em;margin-top:40px;padding-top:26px}
+.favorite-review-page .favorite-synopsis-body h2{font:400 23px/1.6 'EB Garamond','LXGW WenKai Screen','Kaiti SC','STKaiti','KaiTi','Noto Serif SC',serif;margin:0 0 18px}
+.favorite-review-page .favorite-synopsis-body p{font:400 17px/2 'EB Garamond','Noto Serif SC',serif;color:var(--btn-content);margin:0 0 1.2em}
+.favorite-review-page .favorite-synopsis-body p:last-child{margin-bottom:0}
+.favorite-review-page .favorite-review-body{margin-top:38px}
+@media(max-width:767px){.favorite-review-page .favorite-synopsis-body{margin-top:28px;padding-top:22px}.favorite-review-page .favorite-synopsis-body p{font-size:16px;line-height:1.95}}

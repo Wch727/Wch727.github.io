@@ -8,7 +8,7 @@ const {work}=Astro.props;
 const detail=workDetails[work.slug];
 const review=workReviews[work.slug];
 ---
-<MainGridLayout title={work.title} description={review.lead}>
+<MainGridLayout title={work.title} description={work.description}>
   <article class="card-base favorite-detail favorite-review-page" data-pagefind-body>
     <a class="detail-back" href="/favorites/">← 返回喜欢的作品</a>
     <header class="favorite-detail-hero">
@@ -18,12 +18,15 @@ const review=workReviews[work.slug];
         <h1 class="collection-title">{work.title}</h1>
         {work.originalTitle && <p class="detail-original">{work.originalTitle}</p>}
         <p class="detail-creator">{detail.creator}</p>
-        <p class="favorite-review-lead">{review.lead}</p>
       </div>
     </header>
-    <section class="favorite-detail-body favorite-review-body">
+    <section class="favorite-detail-body favorite-synopsis-body" aria-labelledby="work-synopsis-heading">
+      <h2 id="work-synopsis-heading">剧情介绍</h2>
+      {detail.paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    </section>
+    <section class="favorite-detail-body favorite-review-body" aria-labelledby="work-review-heading">
       <p class="favorite-review-kicker">观后短评</p>
-      <h2>{review.headline}</h2>
+      <h2 id="work-review-heading">{review.headline}</h2>
       {review.paragraphs.map(paragraph => <p>{paragraph}</p>)}
     </section>
     <footer class="detail-sources"><a href={detail.official} target="_blank" rel="noopener noreferrer">作品官网 ↗</a><a href={work.source} target="_blank" rel="noopener noreferrer">海报来源 ↗</a></footer>

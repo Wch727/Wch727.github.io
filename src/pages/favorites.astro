@@ -3,9 +3,8 @@ import MainGridLayout from '../layouts/MainGridLayout.astro';
 import { favorites } from '../data/favorites';
 import { musicians } from '../data/musicians';
 import { workDetails } from '../data/work-details';
-import { workReviews } from '../data/work-reviews';
 import '../styles/favorites-journal.css';
-const entries = favorites.map((work,index) => ({work, index:index+1, detail:workDetails[work.slug], review:workReviews[work.slug]}));
+const entries = favorites.map((work,index) => ({work, index:index+1, detail:workDetails[work.slug]}));
 ---
 <MainGridLayout title="喜欢的作品" description="Wangles 收藏的电影、动画与音乐">
   <div class="card-base favorites-journal" data-pagefind-body>
@@ -17,18 +16,18 @@ const entries = favorites.map((work,index) => ({work, index:index+1, detail:work
     <section class="journal-section" aria-labelledby="journal-films-title">
       <div class="journal-section-heading"><h2 id="journal-films-title">电影与动画</h2><span>08</span></div>
       <div class="journal-film-list">
-        {entries.map(({work,index,detail,review}) => (
+        {entries.map(({work,index,detail}) => (
           <article class="journal-film">
             <span class="journal-film-number">{String(index).padStart(2,'0')}</span>
-            <a href={work.href} class="journal-film-poster" aria-label={`阅读《${work.title}》的影评`}>
+            <a href={work.href} class="journal-film-poster" aria-label={`阅读《${work.title}》的剧情介绍及短评`}>
               <img src={work.cover} alt={`《${work.title}》作品海报`} width="600" height="858" loading="lazy" decoding="async" />
             </a>
             <div class="journal-film-body">
               <p class="journal-film-meta">{detail.kind}{detail.year && <span> · {detail.year}</span>}</p>
               <h3><a href={work.href}>{work.title}</a></h3>
               {work.originalTitle && <p class="journal-film-original">{work.originalTitle}</p>}
-              <p class="journal-film-lead">{review.lead}</p>
-              <a href={work.href} class="journal-film-read">读影评 <span aria-hidden="true">↗</span></a>
+              <p class="journal-film-lead">{work.description}</p>
+              <a href={work.href} class="journal-film-read">阅读故事 <span aria-hidden="true">↗</span></a>
             </div>
           </article>
         ))}
