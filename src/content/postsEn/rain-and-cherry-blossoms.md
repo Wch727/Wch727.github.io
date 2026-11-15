@@ -1,36 +1,30 @@
 ---
-title: "Rain Without a Sound, Blossoms Without a Trace"
+title: "Rain Falls in Silence, Cherry Blossoms Leave No Trace"
 published: 2025-05-01T00:00:00+08:00
 datePrecision: month
 image: "/assets/essay-cherry-rain.webp"
-description: "A quieter kind of romance: to name every raindrop and let it fall; to watch the blossoms drift away without giving chase."
+description: "The romance of adulthood: to name each raindrop and let it fall; to watch the blossoms drift away at five centimeters per second, and no longer give chase."
 category: "Essay"
 tags: []
 lang: en
 ---
 
-To grow up is to unfold a yellowing atlas from the shelves of fate, then set out to measure its uncharted country with your own footsteps—even where the map gives way to wilderness.
+Adulthood is the yellowed atlas on fate's bookshelf, its uncharted borders waiting to be measured at a run—even where the road ahead disappears into wilderness no map has thought to name.
 
-To grow up is to emerge from a chrysalis on wings still tender, willing to pay for an immense stretch of sky with the pain of learning to fly. There is weight in every choice, and a stubborn kind of courage in getting up after every fall.
+Adulthood is a pair of wings newly freed from their chrysalis, willing to purchase ninety thousand li of open sky with the pain of their first flight. That pain is the weight of every choice, and the stubborn insistence on rising, unaided, after every fall.
 
-To grow up is to break the seal on a letter addressed to you by fate, and discover that the rest must be written in your own hand. The blank pages hold a thousand possibilities. The blots of ink and the creases, too, will be yours to bear.
+Adulthood is breaking the seal on a letter fate has addressed to us, then taking conviction for a pen to fill the unwritten spaces of tomorrow. Those blank pages promise boundless beginnings; they also conceal the blots of ink and the creases that no one else can bear for us.
 
-To grow up is to turn a key forged from freedom and responsibility. Freedom is no longer the right to run wherever you please; it is the clear-eyed resolve to dance even in shackles. Responsibility is the weight of the pack on your shoulders, and the light by which you find your way.
+Adulthood is a key forged from freedom and responsibility. Only a heart still burning with the ardor of a child can turn it toward the future. Freedom is no longer the wild privilege of running wherever one pleases, but the clear-eyed resolve to dance even in chains; responsibility is both the pack upon our shoulders and the lighthouse quietly burning within.
 
-When someone once as familiar as childhood itself fades into a silhouette across a rift in time, I begin to understand the plea: “I know our lives are brief as mayflies, that death is never far. And still I pray for one more year, one more day, even one more hour.”
+When a childhood sweetheart fades to a silhouette in the fissures of time, at last I understand that desperate prayer: “I know our lives are brief as mayflies, and death follows close as a shadow. Still I pray—for one more year, one more day, one more hour.” I hear again the faint splash of bare feet stepping into rainwater beneath a garden pavilion; feel how pain marks the measure of courage, how the first tremor of affection must find its balance between reticence and candor. I begin to understand that not every truth of the heart must be proclaimed: the hush of someone staying beside you may come nearer to love than the fiercest confession. Some boundaries deserve guarding; some sharpness must learn to yield. Somewhere between the edge and the gentler curve, I am still searching for the person I am.
 
-I think, too, of bare feet stepping into rainwater beneath a garden pavilion. There is courage in admitting what we feel, and another kind of courage in knowing how much to say. I am beginning to understand that affection need not always announce itself; sometimes quiet company comes closer to love than the most impassioned confession. There are boundaries worth respecting, edges worth softening, and a self to be found somewhere between the two.
+“Someone precious. Someone I must not forget. Someone I never want to forget.” A whisper carried across six years has taught me that the meaning of reunion is not to bend fate back upon itself, but to brush past someone in the street and, without shame or hesitation, turn to ask: “Haven't we met somewhere before?” Some people become beacons along the river of our lives; even when distance takes them from us, their light goes on marking the way. And some farewells are lessons growing up will not let us avoid.
 
-“Someone important. Someone I mustn't forget. Someone I never want to forget.” A whisper carried across six years has taught me that meeting someone again need not mean rewriting the course of fate. Sometimes it is enough, after passing them on the street, to turn and ask without embarrassment: “Haven't we met somewhere before?” Some people remain our points of reference long after they have gone from view; some farewells are lessons we cannot grow up without learning.
+At dusk, the downpour will drown the little town; yet the clear sky lingering on a boy's fingertips remains suspended over the dreams he carries into adulthood. However loud and tangled the world becomes, I want to keep a clear place within me for the first things I dreamed of, the first things that moved me. I no longer demand to know the speed at which a cherry blossom falls. The words I never spoke—“Please, always remember me”—have thinned to a lingering resonance, an echo fading through a valley, and still they tell me that once I lived and loved with all the innocence I had. In a notebook lie love letters blurred by rain and messages that never found their way to anyone: like coffee cradled in cold hands at a convenience store stranded in a snowy midnight, warm for a moment, then slowly going cold. Once I mistook the vow “Even if the world were to fall apart, I would still come to see you” for love's highest medal. Now I can stand smiling on an empty platform after the train has passed. Only then do I understand: to bless what I cannot keep takes greater courage than to claim it as mine.
 
-At dusk, the rain will swallow the little town. Yet the patch of clear sky that once rested at a boy's fingertips still hangs over the dreams I carry into adulthood. However loud and complicated the world becomes, I want to keep a place within myself clear enough to shelter the hopes with which I began.
+The romance of adulthood is to give each drop of rain a name, and still let it fall; to count, in silence, five centimeters per second as the cherry blossoms drift away—and no longer give chase. When thunder rolls once more across a cloud-darkened sky, I can finally smile and say: “Look—even the sky is clumsily learning how to cry.”
 
-I no longer insist on knowing how fast a cherry blossom falls. The words I could not say—“Please, always remember me”—have dwindled into an echo across a valley, reminding me how wholly I once lived and loved. Somewhere in a notebook lie letters blurred by rain and messages never sent. They are like a cup of coffee cradled in cold hands at a convenience store deep in a snowy night: warm for a little while, and then cold.
-
-When I was younger, “I'd let the world fall apart just to see you” seemed a medal one might wear for love. Now I can imagine standing alone on an empty platform after the train has gone, and smiling. Perhaps it takes greater courage to make room for another person's happiness than to insist on keeping them close.
-
-Perhaps this is the romance of adulthood: to give every drop of rain a name, and still let it fall; to watch cherry blossoms fall at five centimeters a second, and no longer run after them. When thunder rolls again across a darkened sky, I hope I can smile and say, “Look—even the sky is clumsily learning how to cry.”
-
-And finally: may the road ahead lead you toward the person you hope to become. I wish that for you, and for myself.
+And finally, this wish: may the road ahead lead you to become the person you have always wanted to be. I wish it for you, and for myself.
 
 <p class="essay-signature">Wangles<br /><span>May 2025</span></p>
