@@ -1,7 +1,7 @@
 ---
 title: "connect6"
 published: 2026-10-22T20:53:38+08:00
-description: "和队友为六子棋比赛做的对弈程序，尝试结合策略价值网络、MCTS 与自对弈训练，后来补上了评测和复盘工具。"
+description: "比赛时和队友做的六子棋 AI，结合自博弈训练与 MCTS 搜索，获得赛道一等奖。"
 category: "博弈实验"
 tags: ["强化学习", "自博弈", "MCTS", "六子棋"]
 lang: zh_CN

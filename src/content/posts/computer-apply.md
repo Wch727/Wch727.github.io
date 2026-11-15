@@ -1,7 +1,7 @@
 ---
 title: "铁程（computer_apply）"
 published: 2026-11-13
-description: "收藏的开源火车出行规划项目。用对话提出出行需求，从本地时刻表找候选，再联网核实余票。"
+description: "读过并 fork 的火车出行 Agent：从本地时刻表规划路线，再联网核对余票和票价。"
 category: "开源项目笔记"
 tags: ["出行规划", "工具调用", "SQLite"]
 lang: zh_CN

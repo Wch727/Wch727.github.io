@@ -1,7 +1,7 @@
 ---
 title: "心港（heart-harbor）"
 published: 2026-11-12
-description: "新生引导课做的情感陪伴小网站，可以选择聊天方式、记录心情，也能回看最近的情绪变化。"
+description: "新生引导课做的情感陪伴网站，可以聊聊天、做情绪签到，也可以回看自己的心情记录。"
 category: "互动项目"
 tags: ["课程项目", "情感陪伴", "本地推理"]
 lang: zh_CN

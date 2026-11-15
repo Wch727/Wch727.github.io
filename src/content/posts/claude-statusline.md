@@ -1,7 +1,7 @@
 ---
 title: "claude-code-statusline"
 published: 2026-09-12T21:52:50+08:00
-description: "给 Claude Code 写的终端状态栏，集中显示上下文和 Token 用量、估算费用，还能回查逐请求账本。"
+description: "给 Claude Code 写的终端状态栏，显示上下文、Token 和费用，也能回查每次请求的用量。"
 category: "开发工具"
 tags: ["Claude Code", "终端", "Python"]
 lang: zh_CN
