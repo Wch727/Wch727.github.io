@@ -37,7 +37,7 @@
 .home-project h3 a::after{content:'';position:absolute;inset:0;border-radius:15px}
 .home-project p{font-size:12px;line-height:1.95;color:var(--home-muted)}
 .home-project ul{display:flex;gap:8px 12px;flex-wrap:wrap;margin-top:17px;font-size:10px;color:var(--home-muted)}
-.home-project-compact{display:grid;grid-template-columns:130px minmax(0,1fr)}
+.home-project-compact:has(.home-project-cover){display:grid;grid-template-columns:130px minmax(0,1fr)}
 .home-project-compact .home-project-cover{aspect-ratio:auto;height:100%;min-height:190px;border:0;border-right:1px solid var(--home-rule)}
 .home-project-compact .home-project-cover img{object-fit:contain}
 .home-project-compact .home-project-cover figcaption{display:none}
@@ -45,6 +45,18 @@
 .home-project-compact h3{font-size:16px;margin:7px 0 8px}
 .home-project-compact p{font-size:11px;line-height:1.9}
 .home-project-compact ul{font-size:9px;margin-top:12px;gap:6px 10px}
+.home-source-note {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 20px;
+  padding: 14px 4px 0;
+  border-top: 1px solid var(--home-rule);
+  font-size: 12px;
+}
+.home-source-note span { color: var(--home-muted); }
+.home-source-note a:hover { text-decoration: underline; }
 .home-writing{margin:46px 0 36px;padding-top:30px;border-top:1px solid var(--home-rule)}
 .home-writing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
 .home-notes{background:var(--card-bg);border:1px solid var(--home-rule);border-radius:15px;padding:0 25px}
@@ -73,7 +85,7 @@
 .dark .home-portrait{background:#294640}
 .dark .home-project-cover{background:#283e42}
 .dark .home-project-cover img{filter:brightness(.85)}
-@media(max-width:950px) and (min-width:768px){.home-intro{padding:32px;gap:35px;grid-template-columns:minmax(0,1fr) 200px}.home-project-compact{grid-template-columns:100px minmax(0,1fr)}.home-project-compact .home-project-body{padding:17px 15px}}
+@media(max-width:950px) and (min-width:768px){.home-intro{padding:32px;gap:35px;grid-template-columns:minmax(0,1fr) 200px}.home-project-compact:has(.home-project-cover){grid-template-columns:100px minmax(0,1fr)}.home-project-compact .home-project-body{padding:17px 15px}}
 @media(max-width:767px){
 .home-overview{padding:0 20px 20px}
 .home-intro{grid-template-columns:minmax(0,1fr) 94px;gap:18px;padding:27px 22px;margin:0 -4px 20px;align-items:start;border-radius:16px}
@@ -86,10 +98,10 @@
 .home-projects{padding-top:27px}.home-section-heading h2{font-size:22px}.home-section-heading>a{font-size:11px}
 .home-project-grid,.home-writing-grid{grid-template-columns:1fr;gap:18px}
 .home-project-cover{aspect-ratio:2/1}.home-project-body{padding:20px 22px}.home-project h3{font-size:20px}
-.home-project-compact{grid-template-columns:100px minmax(0,1fr)}.home-project-compact .home-project-body{padding:17px}.home-project-compact h3{font-size:15px}
+.home-project-compact:has(.home-project-cover){grid-template-columns:100px minmax(0,1fr)}.home-project-compact .home-project-body{padding:17px}.home-project-compact h3{font-size:15px}
 .home-writing{margin:34px 0 28px;padding-top:26px}.home-notes{padding:0 22px}
 .home-overview .favorite-preview{padding:24px 20px}.home-overview .favorite-heading h2{font-size:21px}
 .home-overview .preview-posters{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
 }
-@media(max-width:380px){.home-intro{grid-template-columns:minmax(0,1fr) 70px;padding:24px 17px;gap:12px}.home-intro h1{font-size:18px}.home-name{font-size:43px}.home-portrait img{height:120px}.home-project-compact{grid-template-columns:85px minmax(0,1fr)}.home-project-compact .home-project-body{padding:15px}}
+@media(max-width:380px){.home-intro{grid-template-columns:minmax(0,1fr) 70px;padding:24px 17px;gap:12px}.home-intro h1{font-size:18px}.home-name{font-size:43px}.home-portrait img{height:120px}.home-project-compact:has(.home-project-cover){grid-template-columns:85px minmax(0,1fr)}.home-project-compact .home-project-body{padding:15px}}
 @media(prefers-reduced-motion:reduce){.home-project,.home-project-cover img{transition:none}.home-project:hover,.home-project:hover .home-project-cover img{transform:none}}
