@@ -2,8 +2,8 @@
 title: "connect6"
 published: 2026-10-22T20:53:38+08:00
 description: "比赛时和队友做的六子棋 AI，结合自博弈训练与 MCTS 搜索，获得赛道一等奖。"
-category: "博弈实验"
-tags: ["强化学习", "自博弈", "MCTS", "六子棋"]
+category: "游戏 AI"
+tags: ["六子棋", "MCTS", "自博弈"]
 lang: zh_CN
 ---
 

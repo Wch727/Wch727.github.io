@@ -2,8 +2,8 @@
 title: "kaggriculture-agent"
 published: 2026-09-25T15:46:26+08:00
 description: "在 Kaggriculture 的双人农场游戏里尝试做 Agent：先写规则策略和评测，再试行为克隆。"
-category: "博弈实验"
-tags: ["Kaggle", "策略学习", "行为克隆"]
+category: "游戏 AI"
+tags: ["Kaggriculture", "Agent", "行为克隆"]
 lang: zh_CN
 ---
 

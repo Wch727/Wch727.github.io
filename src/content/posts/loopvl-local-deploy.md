@@ -3,7 +3,7 @@ title: "loopvl-local-deploy"
 published: 2026-10-15T16:02:24+08:00
 description: "给 LoopVL 搭的本地网页界面，支持看图问答、连续追问和按需释放模型。目前仍在 CPU 上测试。"
 category: "开发工具"
-tags: ["多模态", "本地部署", "Python"]
+tags: ["LoopVL", "本地部署", "多模态"]
 lang: zh_CN
 ---
 
