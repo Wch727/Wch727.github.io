@@ -1,0 +1,154 @@
+---
+import { favorites } from "../data/favorites";
+import { musicians } from "../data/musicians";
+import { workDetails } from "../data/work-details";
+import { favoriteSongs } from "../data/favorite-songs";
+import { songScenes } from "../data/song-scenes";
+import { artistNamesEn, workTitlesEn } from "../data/favorite-titles-en";
+import { artistProfilesEn, filmNotesEn } from "../data/favorite-reading-en";
+import "../styles/favorites-journal.css";
+
+interface Props { kind?: "work" | "music"; slug?: string }
+const { kind, slug } = Astro.props;
+const work = kind === "work" ? favorites.find(item => item.slug === slug) : undefined;
+const artist = kind === "music" ? musicians.find(item => item.slug === slug) : undefined;
+const film = work && filmNotesEn[work.slug];
+const detail = work && workDetails[work.slug];
+const profile = artist && artistProfilesEn[artist.slug];
+const songs = artist && favoriteSongs[artist.slug];
+const scenes = artist ? songScenes[artist.slug] ?? [] : [];
+const sceneNotes: Record<string, string> = {
+	"inside you": "A window at night, city lights in the distance, and a little warmth inside.",
+	Drown: "Dark waves and light through the clouds, heavy and full of motion.",
+	"ポラリス": "Out on a dark sea, there’s still one star to steer by.",
+	"カタオモイ": "Sunlight, a guitar, and two chairs. The shape of an ordinary day together.",
+	"逆光": "The grass is bright. I still want to go closer and see what’s ahead.",
+	"天黑黑": "A courtyard before rain and a lit kitchen at the end of the day.",
+};
+const workKind = (id: string) =>
+	id === "nailoong" ? "Animated series" : ["spy-family", "sao"].includes(id) ? "TV anime" : "Animated film";
+const japaneseTitle = (item: (typeof favorites)[number]) =>
+	/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(item.originalTitle) ? item.originalTitle : "";
+---
+
+{!kind && (
+  <div class="card-base favorites-journal" data-pagefind-body>
+    <header class="journal-header">
+      <h1>Favorites</h1>
+      <p>Things I’ve watched, things I listen to, and a few I keep coming back to.</p>
+    </header>
+    <section class="journal-section" aria-labelledby="en-films">
+      <div class="journal-section-heading"><h2 id="en-films">Film and animation</h2><span>{favorites.length}</span></div>
+      <div class="journal-film-list">
+        {favorites.map((item, index) => (
+          <article class="journal-film">
+            <span class="journal-film-number">{String(index + 1).padStart(2, "0")}</span>
+            <a href={`/en${item.href}`} class="journal-film-poster" aria-label={`Read about ${workTitlesEn[item.slug]}`}>
+              <img src={item.cover} alt={`Poster for ${workTitlesEn[item.slug]}`} width="600" height="858" loading="lazy" />
+            </a>
+            <div class="journal-film-body">
+              <p class="journal-film-meta">{workKind(item.slug)}{workDetails[item.slug].year && ` · ${workDetails[item.slug].year}`}</p>
+              <h3><a href={`/en${item.href}`} lang={japaneseTitle(item) ? "ja" : undefined}>{japaneseTitle(item) || workTitlesEn[item.slug]}</a></h3>
+              {japaneseTitle(item) && <p class="journal-film-original">{workTitlesEn[item.slug]}</p>}
+              <p class="journal-film-lead">{filmNotesEn[item.slug].lead}</p>
+              <a class="journal-film-read" href={`/en${item.href}`}>Read the story ↗</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="journal-section journal-music" aria-labelledby="en-music">
+      <div class="journal-section-heading"><h2 id="en-music">Music</h2><span>{musicians.length}</span></div>
+      <div class="journal-musician-grid">
+        {musicians.map(item => (
+          <a class="journal-musician" href={`/en${item.href}`}>
+            <img src={item.photo} alt={`Photo of ${artistNamesEn[item.slug]}`} width="700" height="875" loading="lazy" />
+            <span>{artistNamesEn[item.slug]}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+    <section class="journal-character" aria-label="Favorite character">
+      <img src="/assets/muichiro-hero.png" alt="Illustration of Muichiro Tokito" width="1536" height="1024" loading="lazy" />
+      <div><h2>Muichiro Tokito</h2><p>The Mist Hashira from <em>Demon Slayer</em>. I borrowed a little of his misty blue-green for this site.</p></div>
+    </section>
+    <details class="image-credits journal-credits">
+      <summary>Image credits</summary>
+      <p>Posters and artist photos belong to their respective rightsholders. The illustration of Muichiro Tokito is AI-generated.</p>
+      <ul>
+        {favorites.map(item => <li><a href={item.source}>{workTitlesEn[item.slug]} ↗</a></li>)}
+        {musicians.map(item => <li><a href={item.source}>{artistNamesEn[item.slug]} ↗</a></li>)}
+      </ul>
+    </details>
+  </div>
+)}
+
+{work && detail && film && (
+  <article class="card-base favorite-detail favorite-review-page" data-pagefind-body>
+    <a class="detail-back" href="/en/favorites/">← Back to favorites</a>
+    <header class="favorite-detail-hero">
+      <a class="detail-image" href={work.cover} target="_blank" rel="noopener" data-no-swup aria-label="View full poster">
+        <img src={work.cover} alt={`Poster for ${workTitlesEn[work.slug]}`} width="600" height="858" />
+      </a>
+      <div>
+        <p class="welcome-label">{workKind(work.slug)}{detail.year && ` · ${detail.year}`}</p>
+        <h1 class="collection-title" lang={japaneseTitle(work) ? "ja" : undefined}>{japaneseTitle(work) || workTitlesEn[work.slug]}</h1>
+        {japaneseTitle(work) && <p class="detail-original">{workTitlesEn[work.slug]}</p>}
+        <p class="detail-creator">{film.creator}</p>
+      </div>
+    </header>
+    <section class="favorite-detail-body favorite-synopsis-body" aria-labelledby="en-synopsis">
+      <h2 id="en-synopsis">Plot summary</h2>
+      <p><small>Includes spoilers.</small></p>
+      {film.synopsis.map(paragraph => <p>{paragraph}</p>)}
+    </section>
+    <section class="favorite-detail-body favorite-review-body" aria-labelledby="en-review">
+      <p class="favorite-review-kicker">A few thoughts</p>
+      <h2 id="en-review">{film.reviewTitle}</h2>
+      {film.review.map(paragraph => <p>{paragraph}</p>)}
+    </section>
+    <footer class="detail-sources"><a href={detail.official}>Official site ↗</a><a href={work.source}>Poster source ↗</a></footer>
+  </article>
+)}
+
+{artist && profile && (
+  <article class="card-base favorite-detail" data-pagefind-body>
+    <a class="detail-back" href="/en/favorites/">← Back to favorites</a>
+    <header class="favorite-detail-hero">
+      <a class="detail-image singer-detail-image" href={artist.photo} target="_blank" rel="noopener" data-no-swup aria-label="View full photo">
+        <img src={artist.photo} alt={`Photo of ${artistNamesEn[artist.slug]}`} width="700" height="875" />
+      </a>
+      <div>
+        <p class="welcome-label">Music</p>
+        <h1 class="collection-title">{artistNamesEn[artist.slug]}</h1>
+        {artist.name !== artistNamesEn[artist.slug] && <p class="detail-original">{artist.name}</p>}
+        <p class="detail-summary">{profile[0]}</p>
+      </div>
+    </header>
+    <section class="favorite-detail-body">
+      <h2>On the music</h2><p>{profile[1]}</p>
+      {scenes.length > 0 && (
+        <section class="music-scene-section">
+          <h2>Illustrations for the songs</h2>
+          <div class="music-scene-gallery">
+            {scenes.map((scene, index) => (
+              <figure class:list={["music-scene-figure", { "music-scene-secondary": index > 0 }]}>
+                <img src={scene.image} alt={`Illustration for ${scene.title}`} width="1200" height="800" loading="lazy" />
+                <figcaption><h3>{scene.title}</h3><p>{sceneNotes[scene.title]}</p></figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+      {songs ? (
+        <section id="songs" class="favorite-song-section">
+          <h2>Favorite tracks</h2>
+          <div class="favorite-song-grid">
+            {songs.map(song => <article class="favorite-song-card"><h3>{song.title}</h3><a href={song.source}>Lyrics source ↗</a></article>)}
+          </div>
+        </section>
+      ) : <><h2>Selected tracks</h2><ul class="artist-works">{artist.works.map((title: string) => <li>{title}</li>)}</ul></>}
+    </section>
+    <footer class="detail-sources"><a href={artist.link}>Artist and discography ↗</a><a href={artist.source}>Photo source ↗</a></footer>
+  </article>
+)}

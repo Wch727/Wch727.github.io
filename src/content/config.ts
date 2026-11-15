@@ -25,5 +25,6 @@ const specCollection = defineCollection({
 });
 export const collections = {
 	posts: postsCollection,
+	postsEn: postsCollection,
 	spec: specCollection,
 };

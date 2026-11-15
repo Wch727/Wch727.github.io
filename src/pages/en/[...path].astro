@@ -1,0 +1,124 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getEntry, render } from "astro:content";
+import EssayScenes from "../../components/EssayScenes.astro";
+import HomeOverview from "../../components/HomeOverview.astro";
+import Markdown from "../../components/misc/Markdown.astro";
+import EnglishFavorites from "../../components/EnglishFavorites.astro";
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { favorites } from "../../data/favorites";
+import { musicians } from "../../data/musicians";
+import { artistNamesEn, workTitlesEn } from "../../data/favorite-titles-en";
+import { getSortedPosts } from "../../utils/content-utils";
+import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import "../../styles/english.css";
+
+export const getStaticPaths = (async () => {
+	const posts = await getSortedPosts(true);
+	const pages = [
+		{ path: undefined, kind: "home", title: "" },
+		{ path: "about", kind: "about", title: "About" },
+		{ path: "learning", kind: "learning", title: "Study notes" },
+		{ path: "essays", kind: "essays", title: "Essays" },
+		{ path: "archive", kind: "archive", title: "Archive" },
+		{ path: "friends", kind: "friends", title: "Links" },
+		{ path: "favorites", kind: "favorites", title: "Favorites" },
+	] as const;
+	return [
+		...pages.map(({ path, ...props }) => ({ params: { path }, props })),
+		...posts.map(post => ({
+			params: { path: `posts/${post.slug}` },
+			props: { kind: "post" as const, title: post.data.title, post },
+		})),
+		...favorites.map(work => ({
+			params: { path: `favorites/works/${work.slug}` },
+			props: { kind: "work" as const, slug: work.slug, title: workTitlesEn[work.slug] },
+		})),
+		...musicians.map(artist => ({
+			params: { path: `favorites/music/${artist.slug}` },
+			props: { kind: "music" as const, slug: artist.slug, title: artistNamesEn[artist.slug] },
+		})),
+	];
+}) satisfies GetStaticPaths;
+
+const page = Astro.props;
+const post = page.kind === "post" ? page.post : undefined;
+const essay = post?.slug === "rain-and-cherry-blossoms";
+const about = page.kind === "about" ? await getEntry("spec", "about-en") : undefined;
+const entry = post ?? about;
+const rendered = entry ? await render(entry) : undefined;
+const Content = rendered?.Content;
+const listings = {
+	archive: "Projects, study notes, and essays in date order.",
+	learning: "Notes from reading papers, trying reproductions, and studying mathematical modeling.",
+	essays: "A few things I’ve written about growing up and what stays with us.",
+};
+const listKind = page.kind === "archive" || page.kind === "learning" || page.kind === "essays" ? page.kind : null;
+const list = listKind ? (await getSortedPosts(true)).filter(({ data }) =>
+	listKind === "archive" ||
+	(listKind === "learning" && ["Paper Reproduction", "Study Notes"].includes(data.category ?? "")) ||
+	(listKind === "essays" && data.category === "Essay")
+) : [];
+const monthLabel = new Intl.DateTimeFormat("en", { month: "long", year: "numeric", timeZone: "Asia/Shanghai" });
+const dateLabel = (date: Date, monthOnly: boolean) =>
+	monthOnly ? monthLabel.format(date) : formatDateToYYYYMMDD(date);
+const friends = [
+	{ name: "Nevertheless", url: "https://nevertheless.eu.cc/", preview: "friend-nevertheless.webp",
+		description: "Notes on studying, thinking, and small things from everyday life." },
+	{ name: "Yaozhi Ye", url: "https://yeyaozhi.eu.cc/", preview: "friend-yeyaozhi.webp",
+		description: "Mathematics and intelligence, ink and landscapes." },
+];
+---
+<MainGridLayout home={page.kind === "home"} title={page.title} lang="en"
+  banner={post?.data.image} description={post?.data.description}
+  headings={rendered?.headings} setOGTypeArticle={page.kind === "post"}>
+  {page.kind === "home" && <HomeOverview english />}
+
+  {post && (
+    <article class:list={["card-base english-reading", { "essay-reading": essay }]} data-pagefind-body>
+      <header class="english-article-header">
+        <p class="english-post-meta">{post.data.category} · <time datetime={formatDateToYYYYMMDD(post.data.published)}>{dateLabel(post.data.published, post.data.datePrecision === "month")}</time></p>
+        <h1 data-pagefind-meta="title">{post.data.title}</h1>
+      </header>
+      {essay ? <EssayScenes text={post.body} english /> : Content && <Markdown class="markdown-content"><Content /></Markdown>}
+    </article>
+  )}
+
+  {page.kind === "about" && Content && (
+    <article class="card-base english-reading" data-pagefind-body><Markdown class="markdown-content"><Content /></Markdown></article>
+  )}
+
+  {listKind && (
+    <section class="card-base english-reading" data-pagefind-body>
+      <h1>{page.title}</h1>
+      <p class="english-lead">{listings[listKind]}</p>
+      <ul class="english-post-list">
+        {list.map(item => (
+          <li>
+            <h2><a href={`/en/posts/${item.slug}/`}>{item.data.title}</a></h2>
+            <p class="english-post-meta">{dateLabel(item.data.published, item.data.datePrecision === "month")} · {item.data.category}</p>
+            <p>{item.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {page.kind === "friends" && (
+    <section class="card-base english-reading" data-pagefind-body>
+      <h1>Links</h1>
+      <p class="english-lead">A few personal sites I like to visit.</p>
+      <div class="english-friends">
+        {friends.map(friend => (
+          <a href={friend.url} rel="noopener noreferrer" target="_blank">
+            <img src={`/assets/${friend.preview}`} alt={`Preview of ${friend.name}’s site`} width="1280" height="800" loading="lazy" />
+            <div><h2>{friend.name} ↗</h2><p>{friend.description}</p></div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {page.kind === "favorites" && <EnglishFavorites />}
+  {(page.kind === "work" || page.kind === "music") && <EnglishFavorites kind={page.kind} slug={page.slug} />}
+</MainGridLayout>

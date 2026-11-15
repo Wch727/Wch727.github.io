@@ -1,9 +1,14 @@
-<div id="nailoong-companion" aria-label="奶龙吉祥物">
-  <span id="mascot-greeting" role="status" hidden>奶龙来陪你啦。</span>
-  <button id="mascot-pat" type="button" aria-label="摸摸奶龙" title="摸摸奶龙"><img src="/assets/nailoong-mascot.webp" alt="黄色的奶龙网站吉祥物" width="320" height="320" /></button>
-  <button id="mascot-hide" type="button" aria-label="收起奶龙" title="收起奶龙">×</button>
+---
+const { english = false } = Astro.props;
+const pat = english ? "Pet Nailoong" : "摸摸奶龙";
+const hide = english ? "Hide Nailoong" : "收起奶龙";
+---
+<div id="nailoong-companion" aria-label={english ? "Nailoong mascot" : "奶龙吉祥物"}>
+  <span id="mascot-greeting" role="status" hidden>{english ? "Hi! Nailoong is here." : "奶龙来陪你啦。"}</span>
+  <button id="mascot-pat" type="button" aria-label={pat} title={pat}><img src="/assets/nailoong-mascot.webp" alt="" width="320" height="320" /></button>
+  <button id="mascot-hide" type="button" aria-label={hide} title={hide}>×</button>
 </div>
-<button id="mascot-restore" type="button" hidden aria-label="叫奶龙回来">奶龙</button>
+<button id="mascot-restore" type="button" hidden aria-label={english ? "Bring Nailoong back" : "叫奶龙回来"}>{english ? "Nailoong" : "奶龙"}</button>
 <style>
   #nailoong-companion{position:fixed;top:0;left:0;width:82px;height:90px;z-index:70;pointer-events:none;will-change:transform;transform:translate(calc(100vw - 100px),calc(100vh - 115px))}#nailoong-companion[hidden],#mascot-restore[hidden],#mascot-greeting[hidden]{display:none}
   #mascot-pat{display:block;width:82px;height:90px;pointer-events:auto;border:0;background:transparent;cursor:pointer;padding:0}#mascot-pat img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 5px #5a400925)}#mascot-hide{position:absolute;right:-3px;top:2px;width:22px;height:22px;border-radius:50%;background:#fff9dfed;color:#675125;border:1px solid #ddc88c;pointer-events:auto;font-size:16px;line-height:1;opacity:0}#nailoong-companion:hover #mascot-hide,#mascot-hide:focus-visible{opacity:1}

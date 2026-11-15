@@ -3,7 +3,10 @@ import { getSortedPosts } from '../utils/content-utils';
 import { getPostUrlBySlug } from '../utils/url-utils';
 import FavoritePreview from './FavoritePreview.astro';
 import '../styles/home.css';
-const all = await getSortedPosts();
+const { english = false } = Astro.props;
+const prefix = english ? '/en' : '';
+const postUrl = (slug: string) => prefix + getPostUrlBySlug(slug);
+const all = await getSortedPosts(english);
 const featuredProjects = ['connect6', 'algorithm-notebook'];
 const order = [
   ...featuredProjects,
@@ -19,7 +22,18 @@ const projects = order
   .filter(post => post !== undefined);
 const featuredCount = projects.filter(post => featuredProjects.includes(post.slug)).length;
 const openSourceNote = all.find(post => post.slug === 'computer-apply');
-const notes = all.filter(p => ['论文复现', '学习笔记'].includes(p.data.category || ''));
+const noteCategories = english ? ['Paper Reproduction', 'Study Notes'] : ['论文复现', '学习笔记'];
+const notes = all.filter(p => noteCategories.includes(p.data.category || ''));
+const coverAltEn: Record<string, string> = {
+  'heart-harbor': 'Heart Harbor homepage with chat and check-in links',
+  'connect6': 'A Connect6 board and a diagram of the search pipeline',
+  'loopvl-local-deploy': 'Diagram of the LoopVL interface and inference workflow',
+  'algorithm-notebook': 'Algorithm handbook contents and a disjoint-set example',
+  'claude-statusline': 'Example terminal status line with context and token usage',
+  'claude-net-tools': 'Diagram of search, web reading, and document pagination',
+  'video-transcriber': 'Screenshot of the video transcription workspace',
+  'kaggriculture-agent': 'Farm grid and the observation, policy, and action loop',
+};
 const covers: Partial<Record<string, {file: string; alt: string}>> = {
   'heart-harbor': {file:'heart-harbor.webp',alt:'心港首页，展示陪伴聊天和情绪签到入口'},
   'connect6': {file:'connect6.svg',alt:'六子棋棋盘与策略价值搜索示意'},
@@ -36,19 +50,19 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
 <div class="home-overview">
   <header class="home-intro">
     <div>
-      <h1>你好，我是 <span class="home-name">Wangles</span></h1>
-      <p class="home-intro-line">在晴空下，慢慢探索。</p>
-      <p class="home-bio">在中国人民大学高瓴人工智能学院读本科。平时参加 ICPC / CCPC，也喜欢尝试强化学习、Agent 和一些自己用得上的小工具。2026 CCPC 乐山站铜牌。</p>
-      <nav aria-label="个人链接">
-        <a href="/about/">关于我 <span aria-hidden="true">↗</span></a>
+      <h1>{english ? "Hi, I'm" : "你好，我是"} <span class="home-name">Wangles</span></h1>
+      <p class="home-intro-line">{english ? "Taking my time under clear skies." : "在晴空下，慢慢探索。"}</p>
+      <p class="home-bio">{english ? "I’m an undergrad at the Gaoling School of Artificial Intelligence, Renmin University of China. I compete in ICPC and CCPC, tinker with reinforcement learning and agents, and write tools I can use myself. I took bronze at CCPC Leshan in 2026." : "在中国人民大学高瓴人工智能学院读本科。平时参加 ICPC / CCPC，也喜欢尝试强化学习、Agent 和一些自己用得上的小工具。2026 CCPC 乐山站铜牌。"}</p>
+      <nav aria-label={english ? 'Personal links' : '个人链接'}>
+        <a href={`${prefix}/about/`}>{english ? 'About me' : '关于我'} <span aria-hidden="true">↗</span></a>
         <a href="https://github.com/Wch727" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
-    <a class="home-portrait" href="/about/" aria-label="关于 Wangles"><img src="/assets/muichiro-hero.png" alt="时透无一郎插画" width="360" height="300" /></a>
+    <a class="home-portrait" href={`${prefix}/about/`} aria-label={english ? 'About Wangles' : '关于 Wangles'}><img src="/assets/muichiro-hero.png" alt={english ? 'Illustration of Muichiro Tokito' : '时透无一郎插画'} width="360" height="300" /></a>
   </header>
-  <nav class="home-contents" aria-label="首页内容"><a href="#projects">项目 <span>↓</span></a><a href="#writing">笔记与随笔 <span>↓</span></a><a href="#favorites">喜欢的作品 <span>↓</span></a></nav>
+  <nav class="home-contents" aria-label={english ? 'On this page' : '首页内容'}><a href="#projects">{english ? 'Projects' : '项目'} <span>↓</span></a><a href="#writing">{english ? 'Writing' : '笔记与随笔'} <span>↓</span></a><a href="#favorites">{english ? 'Favorites' : '喜欢的作品'} <span>↓</span></a></nav>
   <section id="projects" class="home-projects" aria-labelledby="home-project-title">
-    <div class="home-section-heading"><h2 id="home-project-title">项目</h2><a href="/archive/">全部文章 ↗</a></div>
+    <div class="home-section-heading"><h2 id="home-project-title">{english ? 'Projects' : '项目'}</h2><a href={`${prefix}/archive/`}>{english ? 'All posts ↗' : '全部文章 ↗'}</a></div>
     <div class="home-project-grid">
       {projects.map((post, index) => {
         const cover = covers[post.slug];
@@ -57,7 +71,7 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
           <>
             {index === featuredCount && (
               <div class="home-project-break">
-                <span>其他项目</span>
+                <span>{english ? 'Other projects' : '其他项目'}</span>
               </div>
             )}
             <article class:list={['home-project', {
@@ -66,11 +80,11 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
           }]}>
             {cover && (
               <figure class="home-project-cover">
-                <img src={`/assets/projects/${cover.file}`} alt={cover.alt} width="1000" height="600" loading="lazy" decoding="async" />
+                <img src={`/assets/projects/${cover.file}`} alt={english ? coverAltEn[post.slug] ?? post.data.title : cover.alt} width="1000" height="600" loading="lazy" decoding="async" />
               </figure>
             )}
             <div class="home-project-body">
-              <h3><a href={getPostUrlBySlug(post.slug)}>{post.data.title}</a></h3>
+              <h3><a href={postUrl(post.slug)}>{post.data.title}</a></h3>
               <p>{post.data.description}</p>
             </div>
             </article>
@@ -79,17 +93,17 @@ const essay = all.find(p => p.slug === 'rain-and-cherry-blossoms');
       })}
     </div>
     {openSourceNote && (
-      <aside class="home-source-note" aria-label="开源项目笔记">
-        <span>开源项目笔记</span>
-        <a href={getPostUrlBySlug(openSourceNote.slug)}>{openSourceNote.data.title} ↗</a>
+      <aside class="home-source-note" aria-label={english ? 'Open-source notes' : '开源项目笔记'}>
+        <span>{english ? 'Open-source notes' : '开源项目笔记'}</span>
+        <a href={postUrl(openSourceNote.slug)}>{openSourceNote.data.title} ↗</a>
       </aside>
     )}
   </section>
   <section id="writing" class="home-writing" aria-labelledby="home-writing-title">
-    <div class="home-section-heading"><div><p class="home-eyebrow">NOTES & WORDS</p><h2 id="home-writing-title">知识笔记与随笔</h2></div><a href="/learning/">知识笔记 ↗</a></div>
-    <div class="home-writing-grid"><div class="home-notes">{notes.map(post => <a href={getPostUrlBySlug(post.slug)}><span>{post.data.category}</span><h3>{post.data.title}</h3><p>{post.data.description}</p><span class="home-read">阅读笔记 ↗</span></a>)}</div>
-    {essay && <a class="home-essay" href={getPostUrlBySlug(essay.slug)}><img src="/assets/essay-cherry-rain.webp" alt="雨中的樱花" width="900" height="600" loading="lazy" /><div><span>随笔 · 2025.5</span><h3>雨落无声，樱逝无痕</h3><p>关于成年、相遇，和那些留在心里的事。</p><span class="home-read">读这篇随笔 ↗</span></div></a>}
+    <div class="home-section-heading"><div><p class="home-eyebrow">NOTES & WORDS</p><h2 id="home-writing-title">{english ? 'Notes and essays' : '知识笔记与随笔'}</h2></div><a href={`${prefix}/learning/`}>{english ? 'Study notes ↗' : '知识笔记 ↗'}</a></div>
+    <div class="home-writing-grid"><div class="home-notes">{notes.map(post => <a href={postUrl(post.slug)}><span>{post.data.category}</span><h3>{post.data.title}</h3><p>{post.data.description}</p><span class="home-read">{english ? 'Read the notes ↗' : '阅读笔记 ↗'}</span></a>)}</div>
+    {essay && <a class="home-essay" href={postUrl(essay.slug)}><img src="/assets/essay-cherry-rain.webp" alt={english ? 'Cherry blossoms in the rain' : '雨中的樱花'} width="900" height="600" loading="lazy" /><div><span>{english ? 'Essay · May 2025' : '随笔 · 2025.5'}</span><h3>{essay.data.title}</h3><p>{english ? 'On growing up, meeting people, and what stays with us.' : '关于成年、相遇，和那些留在心里的事。'}</p><span class="home-read">{english ? 'Read the essay ↗' : '读这篇随笔 ↗'}</span></div></a>}
     </div>
   </section>
-  <div id="favorites"><FavoritePreview /></div>
+  <div id="favorites"><FavoritePreview english={english} /></div>
 </div>

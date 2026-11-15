@@ -1,10 +1,16 @@
 ---
 import { favorites } from '../data/favorites';
+import { workTitlesEn } from '../data/favorite-titles-en';
+const { english = false } = Astro.props;
+const prefix = english ? '/en' : '';
 const selected = favorites.filter(work => ['your-name', 'weathering', 'garden', 'spy-family'].includes(work.slug));
 ---
 <section class="card-base favorite-preview">
-  <div class="favorite-heading"><h2>喜欢的作品</h2><a href="/favorites/">完整片单 · 8 部 →</a></div>
+  <div class="favorite-heading"><h2>{english ? 'Favorites' : '喜欢的作品'}</h2><a href={`${prefix}/favorites/`}>{english ? 'All films and series →' : '完整片单 · 8 部 →'}</a></div>
   <div class="preview-posters">
-    {selected.map(work => <a href={work.href} aria-label={`阅读${work.title}介绍`}><img src={work.cover} alt={`${work.title}海报`} width="600" height="858" loading="lazy" decoding="async" /><span>{work.title}</span></a>)}
+    {selected.map(work => {
+      const title = english ? workTitlesEn[work.slug] : work.title;
+      return <a href={prefix + work.href} aria-label={english ? `Read about ${title}` : `阅读${title}介绍`}><img src={work.cover} alt={english ? `Poster for ${title}` : `${title}海报`} width="600" height="858" loading="lazy" decoding="async" /><span>{title}</span></a>;
+    })}
   </div>
 </section>

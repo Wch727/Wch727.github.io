@@ -4,8 +4,8 @@ import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 
 // // Retrieve posts and sort them by publication date
-async function getRawSortedPosts() {
-	const allBlogPosts = await getCollection("posts", ({ data }) => {
+async function getRawSortedPosts(english = false) {
+	const allBlogPosts = await getCollection(english ? "postsEn" : "posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
@@ -17,8 +17,8 @@ async function getRawSortedPosts() {
 	return sorted;
 }
 
-export async function getSortedPosts() {
-	const sorted = await getRawSortedPosts();
+export async function getSortedPosts(english = false) {
+	const sorted = await getRawSortedPosts(english);
 
 	for (let i = 1; i < sorted.length; i++) {
 		sorted[i].data.nextSlug = sorted[i - 1].slug;
