@@ -2,110 +2,14 @@
 import MainGridLayout from '../layouts/MainGridLayout.astro';
 import { favorites } from '../data/favorites';
 import { musicians } from '../data/musicians';
-import { favoriteSongs } from '../data/favorite-songs';
-import '../styles/favorites-editorial.css';
-
-const chosenArtists = ['milet', 'aimer', 'stefanie-sun'];
-const lyricAlbums = chosenArtists.flatMap(slug => {
-  const artist = musicians.find(person => person.slug === slug);
-  const songs = favoriteSongs[slug] || [];
-  return artist ? [{ artist, songs }] : [];
-});
-const otherArtists = musicians.filter(artist => !chosenArtists.includes(artist.slug));
 ---
-<MainGridLayout title="喜欢的作品" description="Wangles 的电影、动画、音乐与角色收藏">
-  <div class="card-base favorites-editorial" data-pagefind-body>
-    <header class="favorites-opening">
-      <p class="favorites-overline">OFF THE SCREEN</p>
-      <h1>一些喜欢，放在这里。</h1>
-      <p>不是排名，也不打算列得很全。只是想留住一些会反复回看的作品，和听了很多遍的歌。</p>
-    </header>
-
-    <section class="favorites-films" aria-labelledby="favorite-films-title">
-      <div class="favorites-section-head">
-        <h2 id="favorite-films-title">影像</h2>
-        <span>Films / Animation</span>
-      </div>
-      <div class="favorites-films-grid">
-        {favorites.map(work => (
-          <article class="favorites-film">
-            <a href={work.href} class="favorites-film-image" aria-label={`查看${work.title}`}>
-              <img src={work.cover} alt={`《${work.title}》海报`} width="600" height="858" loading="lazy" decoding="async" />
-            </a>
-            <h3><a href={work.href}>{work.title}</a></h3>
-            {work.originalTitle && <p class="favorites-film-original">{work.originalTitle}</p>}
-            <p class="favorites-film-description">{work.description}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="favorites-listening" aria-labelledby="favorites-listening-title">
-      <div class="favorites-section-head">
-        <h2 id="favorites-listening-title">听歌</h2>
-        <span>On repeat</span>
-      </div>
-      <div class="favorites-listening-intro">
-        <p>歌单会变，但有些声音总会回来。</p>
-      </div>
-      <div class="favorites-album-grid">
-        {lyricAlbums.map(({ artist, songs }) => (
-          <section class="favorites-album" aria-labelledby={`fav-artist-${artist.slug}`}>
-            <header class="favorites-album-head">
-              <a href={artist.href} class="favorites-album-image" aria-label={`查看${artist.name}`}>
-                <img src={artist.photo} alt={`${artist.name} 照片`} width="700" height="875" loading="lazy" decoding="async" />
-              </a>
-              <div>
-                <span class="favorites-album-index">{String(chosenArtists.indexOf(artist.slug) + 1).padStart(2, '0')} / 03</span>
-                <h3 id={`fav-artist-${artist.slug}`}><a href={artist.href}>{artist.name}</a></h3>
-                <p>{songs.length} songs</p>
-              </div>
-            </header>
-            <ol class="favorites-verse-list">
-              {songs.map((song, index) => (
-                <li>
-                  <span class="favorites-verse-index">{String(index + 1).padStart(2, '0')}</span>
-                  <div>
-                    <blockquote lang={song.language === 'ja' ? 'ja' : 'zh-CN'}>{song.excerpt}</blockquote>
-                    <cite>— {song.title}</cite>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </section>
-        ))}
-      </div>
-      <div class="favorites-others">
-        <p class="favorites-others-label">也一直在听</p>
-        <div class="favorites-others-grid">
-          {otherArtists.map(artist => (
-            <a href={artist.href} class="favorites-other-artist">
-              <img src={artist.photo} alt="" width="700" height="875" loading="lazy" decoding="async" />
-              <span>{artist.name}</span>
-              <span class="favorites-other-arrow" aria-hidden="true">↗</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="favorites-character" aria-label="喜欢的角色">
-      <img src="/assets/muichiro-hero.png" alt="时透无一郎插画" width="1536" height="1024" loading="lazy" />
-      <div>
-        <p class="favorites-overline">A FAVORITE CHARACTER</p>
-        <h2>时透无一郎</h2>
-        <p>《鬼灭之刃》的霞柱。这个小站也留了一点他的雾青色。</p>
-      </div>
-    </section>
-
-    <details class="image-credits favorites-credits">
-      <summary>图片来源</summary>
-      <p>作品海报与歌手照片版权归原权利人所有。</p>
-      <ul>
-        {favorites.map(work => <li><a href={work.source} target="_blank" rel="noopener noreferrer">{work.title} ↗</a></li>)}
-        {musicians.map(artist => <li><a href={artist.source} target="_blank" rel="noopener noreferrer">{artist.name} ↗</a></li>)}
-      </ul>
-      <p>时透无一郎配图为 AI 生成的角色插画。</p>
-    </details>
-  </div>
+<MainGridLayout title="喜欢的作品" description="Wangles 喜欢的动画、电影与角色">
+ <section class="card-base collection film-collection" data-pagefind-body>
+  <p class="welcome-label">代码之外</p><h1 class="collection-title">一些喜欢，放在这里。</h1>
+  <p class="collection-intro">电影、动画、角色和音乐。</p>
+  <div class="poster-grid">{favorites.map(work => <article class="poster-card"><a class="poster-image" href={work.href} aria-label={`阅读${work.title}介绍`}><img src={work.cover} alt={`《${work.title}》作品海报`} width="600" height="858" loading="lazy" decoding="async" /><span class="poster-enlarge" aria-hidden="true">→</span></a><h2 class="poster-name"><a href={work.href}>{work.title}</a></h2><p class="poster-original">{work.originalTitle}</p><p class="poster-description">{work.description}</p></article>)}</div>
+  <section class="music-favorites"><h2>音乐</h2><div class="musician-grid">{musicians.map(artist => <article><a href={artist.href} aria-label={`阅读${artist.name}介绍`}><img src={artist.photo} alt={`${artist.name}宣传照`} width="700" height="875" loading="lazy" decoding="async" /></a><h3><a href={artist.href}>{artist.name}</a></h3></article>)}</div></section>
+  <section class="favorite-character"><img src="/assets/muichiro-hero.png" alt="雾青色背景中的时透无一郎" width="1536" height="1024" loading="lazy" /><div><p class="welcome-label">喜欢的角色</p><h2>时透无一郎</h2><p>《鬼灭之刃》的霞柱。<br />这个小站，也留了一点他的雾青色。</p></div></section>
+  <details class="image-credits"><summary>图片来源</summary><p>作品图片与宣传照版权归原权利人所有，点击名称可查看来源。</p><ul>{favorites.map(work => <li><a href={work.source} target="_blank" rel="noopener noreferrer">{work.title} ↗</a></li>)}{musicians.map(artist => <li><a href={artist.source} target="_blank" rel="noopener noreferrer">{artist.name} ↗</a></li>)}</ul><p>时透无一郎配图为 AI 生成的角色插画。</p></details>
+ </section>
 </MainGridLayout>
