@@ -1,30 +1,36 @@
 ---
-title: "Silent Rain, Falling Blossoms"
+title: "Rain Without a Sound, Blossoms Without a Trace"
 published: 2025-05-01T00:00:00+08:00
 datePrecision: month
 image: "/assets/essay-cherry-rain.webp"
-description: "There’s a quiet romance in naming each drop of rain and letting it fall, in counting five centimeters per second and letting it go."
+description: "A quieter kind of romance: to name every raindrop and let it fall; to watch the blossoms drift away without giving chase."
 category: "Essay"
 tags: []
 lang: en
 ---
 
-Growing up is a yellowed atlas on fate’s bookshelf. You take off running to see how far its unmarked country goes, even when the road ahead leads into blank wilderness.
+To grow up is to unfold a yellowing atlas from the shelves of fate, then set out to measure its uncharted country with your own footsteps—even where the map gives way to wilderness.
 
-It is a butterfly’s new wings as the cocoon falls away, waiting to trade pain for a sky that stretches for miles. That pain is the weight of each choice and the stubbornness it takes to get up on your own after each fall.
+To grow up is to emerge from a chrysalis on wings still tender, willing to pay for an immense stretch of sky with the pain of learning to fly. There is weight in every choice, and a stubborn kind of courage in getting up after every fall.
 
-It is opening a letter that fate sent you and taking up your own pen. The page ahead has room for whatever you might write. It will also carry the stains and creases you’ll have to live with.
+To grow up is to break the seal on a letter addressed to you by fate, and discover that the rest must be written in your own hand. The blank pages hold a thousand possibilities. The blots of ink and the creases, too, will be yours to bear.
 
-It is a key cast from freedom and responsibility. It takes an open heart to turn it. Freedom now is choosing to dance even with something holding you back. Responsibility is the bag on your shoulders and the light you steer by.
+To grow up is to turn a key forged from freedom and responsibility. Freedom is no longer the right to run wherever you please; it is the clear-eyed resolve to dance even in shackles. Responsibility is the weight of the pack on your shoulders, and the light by which you find your way.
 
-When someone from childhood fades to a silhouette in a crack between then and now, I finally understand the plea for another year, another day, even another hour. I think of stepping barefoot into the water under a rain shelter. There is a little courage in that shock, the kind it takes to find how much of a feeling to say out loud. I’m learning that quiet company can carry a great deal of love, that some boundaries take care to keep, and that I can soften some of my edges and still find myself underneath.
+When someone once as familiar as childhood itself fades into a silhouette across a rift in time, I begin to understand the plea: “I know our lives are brief as mayflies, that death is never far. And still I pray for one more year, one more day, even one more hour.”
 
-There is a voice, six years away, trying desperately to remember someone important. I think of the honesty it takes to pass a stranger and say you feel as though you’ve met before. Some people keep showing you where to go long after they’ve gone. Some goodbyes are part of growing up.
+I think, too, of bare feet stepping into rainwater beneath a garden pavilion. There is courage in admitting what we feel, and another kind of courage in knowing how much to say. I am beginning to understand that affection need not always announce itself; sometimes quiet company comes closer to love than the most impassioned confession. There are boundaries worth respecting, edges worth softening, and a self to be found somewhere between the two.
 
-Rain will swallow the little town at dusk. The clear sky that once touched my fingertips still turns up in my dreams. I try to keep a clear place for the things I first hoped for. I’ve stopped asking how quickly the blossoms fall. The words I never said echo back to remind me how honestly I once lived and loved. In my notebook there are rain-soaked letters and messages I never sent, like coffee warming my hands in an all-night store while snow blows outside. Even that coffee cools. I used to think I’d let the world fall apart for the chance to see someone. Now I can smile on an empty platform after the train goes by. It took me years to learn how much courage it can take to let someone go.
+“Someone important. Someone I mustn't forget. Someone I never want to forget.” A whisper carried across six years has taught me that meeting someone again need not mean rewriting the course of fate. Sometimes it is enough, after passing them on the street, to turn and ask without embarrassment: “Haven't we met somewhere before?” Some people remain our points of reference long after they have gone from view; some farewells are lessons we cannot grow up without learning.
 
-There’s a quiet romance in naming each drop of rain and letting it fall, in counting five centimeters per second and letting it go. The next time thunder rolls through a dark sky, I can smile and think that the sky, too, is clumsily learning how to cry.
+At dusk, the rain will swallow the little town. Yet the patch of clear sky that once rested at a boy's fingertips still hangs over the dreams I carry into adulthood. However loud and complicated the world becomes, I want to keep a place within myself clear enough to shelter the hopes with which I began.
 
-I hope you grow into someone you want to be. I wish the same for myself.
+I no longer insist on knowing how fast a cherry blossom falls. The words I could not say—“Please, always remember me”—have dwindled into an echo across a valley, reminding me how wholly I once lived and loved. Somewhere in a notebook lie letters blurred by rain and messages never sent. They are like a cup of coffee cradled in cold hands at a convenience store deep in a snowy night: warm for a little while, and then cold.
+
+When I was younger, “I'd let the world fall apart just to see you” seemed a medal one might wear for love. Now I can imagine standing alone on an empty platform after the train has gone, and smiling. Perhaps it takes greater courage to make room for another person's happiness than to insist on keeping them close.
+
+Perhaps this is the romance of adulthood: to give every drop of rain a name, and still let it fall; to watch cherry blossoms fall at five centimeters a second, and no longer run after them. When thunder rolls again across a darkened sky, I hope I can smile and say, “Look—even the sky is clumsily learning how to cry.”
+
+And finally: may the road ahead lead you toward the person you hope to become. I wish that for you, and for myself.
 
 <p class="essay-signature">Wangles<br /><span>May 2025</span></p>

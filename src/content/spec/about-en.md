@@ -1,27 +1,35 @@
-# Hi, I’m Wangles
+# Hello, I'm Wangles
 
-I’m an undergraduate at the Gaoling School of Artificial Intelligence, Renmin University of China. I go by [Wch727 on GitHub](https://github.com/Wch727).
+I'm an undergraduate at the **Gaoling School of Artificial Intelligence, Renmin University of China**. On GitHub, I'm [Wch727](https://github.com/Wch727).
 
-I spend some of my time on ICPC and CCPC, and some of it trying out ideas in algorithms, reinforcement learning, and agents. I also write small tools when I run into something I’d like to do more easily. I’m still figuring out what I want to research.
+Most days, I move between ICPC / CCPC practice, experiments with algorithms, reinforcement learning and agents, and little tools I build because I wish they already existed. I haven't settled on a research direction yet. For now, I'm learning what holds my attention, and why.
 
-## Competitions and algorithms
+## Competitions & algorithms
 
-In my first semester, I worked on a [Connect6 engine](/en/posts/connect6/) that combines a policy and value network, Monte Carlo tree search, and self-play. Our entry placed third and received first prize in the Connect6 track of the first Beijing “AI+” Innovation Competition for university students. After the contest I organized the training and evaluation code, a web interface for playing, and the game replay tools.
+**Connect6.** In December 2025, during my first semester, I worked with teammates on a [Connect6 engine](/en/posts/connect6/) for the inaugural Beijing University Students' “AI+” Innovation Competition. We finished **third in the Connect6 track, within the First Prize award tier**. Our approach combined a policy–value network, Monte Carlo tree search (MCTS), and self-play. After the competition, we organized the training and evaluation code, browser-based play, and tools for reviewing games.
 
-I started competing in programming contests in 2026 and took bronze at CCPC Leshan. While preparing, I put together a [C++ algorithm reference](/en/posts/algorithm-notebook/) with Codex. It includes templates, notes, tests, and a printable handbook.
+[Project and source code](/en/posts/connect6/) · [University report](https://ai.ruc.edu.cn/xwgg/xyxw/20260313001.html)
 
-## Models and agents
+**ICPC / CCPC.** I began competitive programming in 2026, and my team earned a **bronze medal at the 2026 CCPC Leshan contest**. During practice, I also put together a [C++ algorithm handbook](/en/posts/algorithm-notebook/) with Codex: templates, notes on their pitfalls, tests, and a version designed to be printed and taken to contests.
 
-I worked with a senior student on a [Sonata reproduction](/en/posts/sonata-notes/) using Qwen3-8B. I was looking at whether hidden states could help estimate how reliable a direct answer would be and guide the choice to enable thinking mode. I recorded the collection, training, and evaluation steps. I don’t yet have a complete final comparison.
+## Exploring models & agents
 
-I’ve also run some agent benchmarks. For [Kaggriculture](/en/posts/kaggriculture-agent/), I tried rule-based play, match evaluation, and behavior cloning. I started [lean-context](/en/posts/lean-context/) to cut down long tool outputs and preserve task progress in OpenClaw. That prototype is unfinished and archived.
+Working with a senior student, I tried to [reproduce Sonata on Qwen3-8B](/en/posts/sonata-notes/): using hidden states to estimate how reliably the model could answer without extended reasoning, then deciding whether to enable thinking mode. I documented data collection, adapter training, and evaluation, though I don't yet have a complete final comparison.
 
-## Tools I wanted to use
+I've also experimented with agent benchmarks. In [Kaggriculture](/en/posts/kaggriculture-agent/), a two-player farming game, I tried rule-based policies, match evaluation, and behavior cloning. I built an early OpenClaw context-compression plugin, [lean-context](/en/posts/lean-context/), to reduce the weight of long tool outputs and carry useful task state forward. The prototype is unfinished and has been archived.
 
-I wrote [Video Transcriber](/en/posts/video-transcriber/) because I wanted a transcript for English homework. When Claude Code through a third-party API lacked web search, I made [Net Tools](/en/posts/claude-net-tools/). I later added a [status line](/en/posts/claude-statusline/) so I could see context and token usage in the terminal. [Heart Harbor](/en/posts/heart-harbor/) was a website I made for my freshman orientation course.
+These projects have left me curious about how agents handle long tasks, how systems learn from experience, and what a model's reasoning costs.
 
-## Away from the keyboard
+## Tools, made out of necessity
 
-I like Muichiro Tokito from *Demon Slayer*, several of Makoto Shinkai’s films, *Into the Forest of Fireflies’ Light*, *Nailoong*, *SPY × FAMILY*, and *Sword Art Online*.
+I wanted to turn an English homework video into text, so I made [Video Transcriber](/en/posts/video-transcriber/). When the third-party API I used with Claude Code didn't support web search, I wrote [Net Tools](/en/posts/claude-net-tools/). Later I built a [terminal status line](/en/posts/claude-statusline/) to keep context usage and token costs in view.
 
-I listen to milet, Aimer, Stefanie Sun, David Tao, Hikaru Utada, Jay Chou, and Fish Leong. I keep a few notes on the [Favorites page](/en/favorites/).
+I also made [Heart Harbor](/en/posts/heart-harbor/), a small emotional-support website, for a freshman orientation course. Some of these projects are fairly complete; others are experiments I wanted to learn from. Each has its own notes and source links.
+
+## Beyond the screen
+
+I like Muichiro Tokito, the Mist Hashira in *Demon Slayer*; Makoto Shinkai's *Your Name*, *Weathering with You*, *5 Centimeters per Second*, and *The Garden of Words*; as well as *Into the Forest of Fireflies' Light*, *Nailoong*, *SPY × FAMILY*, and *Sword Art Online*.
+
+My playlists tend to return to milet, Aimer, Stefanie Sun, David Tao, Hikaru Utada, Jay Chou, and Fish Leong.
+
+[Films, music, and other favorites →](/en/favorites/)

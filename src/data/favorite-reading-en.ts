@@ -1,3 +1,14 @@
+export const filmSummariesEn: Record<string, string> = {
+  "your-name": "Three years apart, Mitsuha and Taki exchange bodies. Taki goes back to save her town from a comet disaster; years later, they meet again in Tokyo.",
+  weathering: "Hodaka rescues Hina, who can clear Tokyo’s skies, from being sacrificed to the weather. The rain returns, the city floods, and they reunite three years later.",
+  "five-centimeters": "Takaki and Akari part after one last snowy night. Years later, after a life of missed connections, Takaki glimpses someone like her at a railway crossing—and walks on.",
+  garden: "Takao meets Yukino on rainy mornings in a garden, then learns she is a teacher at his school. After a confession and a painful goodbye, they each start anew.",
+  fireflies: "Every summer, Hotaru visits Gin, who will vanish if a human touches him. After an accidental touch at a festival, their first embrace becomes their last.",
+  "spy-family": "A spy builds a pretend family with an assassin and a mind-reading child. Missions and school life bring them closer, even while their secrets remain. The series continues.",
+  sao: "Trapped in a deadly VR game, Kirito and Asuna fight to escape. He defeats its creator on Floor 75, then enters another virtual world to rescue Asuna.",
+  nailoong: "An exuberant alien dragon befriends a boy named Xiaoqi. Their everyday mishaps become comic adventures in a series of largely self-contained shorts.",
+};
+
 type FilmNotes = {
 	creator: string;
 	lead: string;

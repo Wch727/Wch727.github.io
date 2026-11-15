@@ -7,7 +7,7 @@ tags: ["LLMs"]
 lang: en
 ---
 
-I tried reproducing Sonata on Qwen3-8B. The question I wanted to understand was whether a signal available before generation could help choose between direct answering and thinking mode.
+I tried to reproduce Sonata on Qwen3-8B, starting from a practical question: can a model tell, before it begins answering, which problems deserve the extra cost of extended reasoning?
 
 ## How I built the target
 

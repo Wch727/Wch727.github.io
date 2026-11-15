@@ -7,11 +7,11 @@ tags: ["Reinforcement Learning"]
 lang: en
 ---
 
-I worked on this Connect6 engine for the first Beijing “AI+” Innovation Competition for university students in December 2025. Our entry placed third and received first prize in the Connect6 track. I later organized the code for training, evaluation, web play, and replaying games.
+I worked on this Connect6 engine for the first Beijing “AI+” Innovation Competition for university students in December 2025. Our team finished third in the Connect6 track, within the First Prize award tier. I later organized the code for training, evaluation, web play, and replaying games.
 
 ## From board rules to a learned policy
 
-Connect6 uses a 19×19 board. Black places one stone to open the game; thereafter each side places two stones per turn. Six or more in a row wins. A move has to account for how the two stones work together and what the opponent can threaten next.
+Connect6 uses a 19×19 board. Black places one stone to open the game; thereafter each side places two stones per turn. Six or more in a row wins. Every turn asks two questions at once: where should the stones go together, and what will that leave the opponent free to do?
 
 An AlphaZero-style policy and value network estimates moves and positions. Monte Carlo tree search compares candidates, and self-play produces training data. The repository also has entry points for generating data, supervised pretraining, and shorter experiments.
 

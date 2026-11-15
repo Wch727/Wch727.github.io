@@ -7,7 +7,7 @@ tags: ["ICPC"]
 lang: en
 ---
 
-I put together this template library with Codex while preparing for ICPC and CCPC. It keeps the code, usage notes, tests, and printable handbook in one place. I took bronze at CCPC Leshan in 2026.
+I built this C++ reference with Codex while preparing for ICPC and CCPC. It brings implementations, notes on where they break, tests, and a printable handbook into one place. My team earned bronze at the 2026 CCPC Leshan contest. This English page is a guide to the library; the full file-by-file catalog is in Chinese.
 
 ## What’s in it
 

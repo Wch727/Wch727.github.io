@@ -5,7 +5,7 @@ import { workDetails } from "../data/work-details";
 import { favoriteSongs } from "../data/favorite-songs";
 import { songScenes } from "../data/song-scenes";
 import { artistNamesEn, workTitlesEn } from "../data/favorite-titles-en";
-import { artistProfilesEn, filmNotesEn } from "../data/favorite-reading-en";
+import { artistProfilesEn, filmNotesEn, filmSummariesEn } from "../data/favorite-reading-en";
 import "../styles/favorites-journal.css";
 
 interface Props { kind?: "work" | "music"; slug?: string }
@@ -50,7 +50,7 @@ const japaneseTitle = (item: (typeof favorites)[number]) =>
               <p class="journal-film-meta">{workKind(item.slug)}{workDetails[item.slug].year && ` · ${workDetails[item.slug].year}`}</p>
               <h3><a href={`/en${item.href}`} lang={japaneseTitle(item) ? "ja" : undefined}>{japaneseTitle(item) || workTitlesEn[item.slug]}</a></h3>
               {japaneseTitle(item) && <p class="journal-film-original">{workTitlesEn[item.slug]}</p>}
-              <p class="journal-film-lead">{filmNotesEn[item.slug].lead}</p>
+              <p class="journal-film-lead">{filmSummariesEn[item.slug]}</p>
               <a class="journal-film-read" href={`/en${item.href}`}>Read the story ↗</a>
             </div>
           </article>
@@ -99,8 +99,7 @@ const japaneseTitle = (item: (typeof favorites)[number]) =>
     </header>
     <section class="favorite-detail-body favorite-synopsis-body" aria-labelledby="en-synopsis">
       <h2 id="en-synopsis">Plot summary</h2>
-      <p><small>Includes spoilers.</small></p>
-      {film.synopsis.map(paragraph => <p>{paragraph}</p>)}
+            {film.synopsis.map(paragraph => <p>{paragraph}</p>)}
     </section>
     <section class="favorite-detail-body favorite-review-body" aria-labelledby="en-review">
       <p class="favorite-review-kicker">A few thoughts</p>

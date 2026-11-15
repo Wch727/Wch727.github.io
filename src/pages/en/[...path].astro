@@ -51,7 +51,7 @@ const Content = rendered?.Content;
 const listings = {
 	archive: "Projects, study notes, and essays in date order.",
 	learning: "Notes from reading papers, trying reproductions, and studying mathematical modeling.",
-	essays: "A few things I’ve written about growing up and what stays with us.",
+	essays: "Personal essays on growing older, remembering, and letting go.",
 };
 const listKind = page.kind === "archive" || page.kind === "learning" || page.kind === "essays" ? page.kind : null;
 const list = listKind ? (await getSortedPosts(true)).filter(({ data }) =>
