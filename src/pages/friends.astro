@@ -3,6 +3,7 @@ import MainGridLayout from '../layouts/MainGridLayout.astro';
 const friends = [
   { name: 'Nevertheless', url: 'https://nevertheless.eu.cc/', domain: 'nevertheless.eu.cc', image: '/assets/friend-nevertheless.webp', description: '思考、学习，也记录生活里的小事。', tone: 'blossom' },
   { name: '叶耀之', url: 'https://yeyaozhi.eu.cc/', domain: 'yeyaozhi.eu.cc', image: '/assets/friend-yeyaozhi.webp', description: '数学与智能，笔墨与山水。', tone: 'mountain' },
+  { name: "Yutong's Site", url: 'https://www.lyt0112.com/', domain: 'lyt0112.com', image: 'https://www.lyt0112.com/favicon/favicon.svg', description: 'My compass is curiosity.', tone: 'avatar' },
 ];
 ---
 <MainGridLayout title="友链" description="一些我常去的个人网站。">
@@ -16,7 +17,9 @@ const friends = [
       {friends.map((friend) => (
         <a class:list={['friend-card', friend.tone]} href={friend.url} target="_blank" rel="noopener noreferrer" aria-label={`访问 ${friend.name} 的网站（新标签页）`}>
           <div class="friend-preview">
-            <img src={friend.image} alt={`${friend.name} 的网站首页预览`} width="1280" height="800" />
+            {friend.tone === 'avatar'
+              ? <img src={friend.image} alt="" width="80" height="80" loading="lazy" />
+              : <img src={friend.image} alt={`${friend.name} 的网站首页预览`} width="1280" height="800" />}
             <span class="friend-visit" aria-hidden="true">去逛逛 <span>↗</span></span>
           </div>
           <div class="friend-info">
@@ -44,6 +47,8 @@ const friends = [
   .friend-card.mountain { --friend-accent: #63847a; }
   .friend-preview { position: relative; aspect-ratio: 1.6; overflow: hidden; background: #eceff0; border-bottom: 1px solid var(--line-color); }
   .friend-preview img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+  .avatar .friend-preview { display: grid; place-items: center; background: var(--card-bg); }
+  .avatar .friend-preview img { width: min(80px, 28%); height: auto; object-fit: contain; }
   .friend-visit { position: absolute; right: 12px; bottom: 12px; padding: 5px 11px; border-radius: 20px; background: #fffef5ee; color: #314851; font-size: 11px; box-shadow: 0 2px 12px #233e4912; opacity: 0; transform: translateY(5px); transition: opacity .25s ease, transform .25s ease; }
   .friend-visit span { margin-left: 7px; }
   .friend-info { padding: 20px 20px 18px; }

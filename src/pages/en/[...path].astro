@@ -68,6 +68,8 @@ const friends = [
 		description: "Notes on studying, thinking, and small things from everyday life." },
 	{ name: "Yaozhi Ye", url: "https://yeyaozhi.eu.cc/", preview: "friend-yeyaozhi.webp",
 		description: "Mathematics and intelligence, ink and landscapes." },
+	{ name: "Yutong's Site", url: "https://www.lyt0112.com/", avatar: "https://www.lyt0112.com/favicon/favicon.svg",
+		description: "My compass is curiosity." },
 ];
 ---
 <MainGridLayout home={page.kind === "home"} title={page.title} lang="en"
@@ -114,7 +116,9 @@ const friends = [
       <div class="english-friends">
         {friends.map(friend => (
           <a href={friend.url} rel="noopener noreferrer" target="_blank">
-            <img src={`/assets/${friend.preview}`} alt={`Preview of ${friend.name}’s site`} width="1280" height="800" loading="lazy" />
+            {friend.avatar
+              ? <div class="english-friend-avatar"><img src={friend.avatar} alt="" width="80" height="80" loading="lazy" /></div>
+              : <img src={`/assets/${friend.preview}`} alt={`Preview of ${friend.name}’s site`} width="1280" height="800" loading="lazy" />}
             <div><h2>{friend.name} ↗</h2><p>{friend.description}</p></div>
           </a>
         ))}
@@ -128,4 +132,6 @@ const friends = [
 
 <style>
   .essay-list { display: grid; gap: 24px; }
+  .english-friends a > .english-friend-avatar { display: grid; place-items: center; aspect-ratio: 1.6; padding: 0; }
+  .english-friend-avatar img { width: min(80px, 28%); }
 </style>
